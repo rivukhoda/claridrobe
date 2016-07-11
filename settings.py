@@ -8,6 +8,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
 	DEBUG = True
+	MONGO_DBNAME='database'
 
 class TestingConfig(Config):
 	TESTING = True
