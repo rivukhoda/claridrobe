@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.onvisible.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+</head>
+
+<body ng-controller="MainController" class="nosidebar">
+
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<div id="header">
+
+			<!-- Inner -->
+			<div class="inner">
+				<header>
+					<h1><a href="index.html" id="logo">Clairidrobe</a></h1>
+										<header>
+						<h2 id="title">Generate Outfit</h2>
+					</header>
+				</header>
+			</div>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="Gallery.html">Gallery</a></li>
+					<li><a href="Outfits.html">Outfit</a></li>
+					<li><a href="Styles.html">Styles</a></li>
+					<li><a href="Upload.html">Upload</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+
+	<section id="content" class="content-section">
+		<div class="container">
+
+		<!-- Banner -->
+		<section id="banner">
+			<header>
+				<h2>Hi. Welcome to <strong>Clairidrobe!</strong></h2>
+				<p> Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong> and the weather is <strong>-10&deg;C</strong> in <strong>Montreal.</strong> What would you like to wear today?</p>
+			</header>
+			<footer>
+				<button ng-click="shirtIndex = getRandomIndex(shirts.length);pantIndex = getRandomIndex(pants.length);shoeIndex = getRandomIndex(shoes.length);jacketIndex = getRandomIndex(jackets.length)">Randomize</button>
+				<button ng-click="shirtIndex = getRandomIndex(shirts.length);pantIndex = getRandomIndex(pants.length);shoeIndex = getRandomIndex(shoes.length);jacketIndex = getRandomIndex(jackets.length)" class="button">Recommend</button>
+			</footer>
+		</section>
+
+		<div class="row" id="outfit">
+
+			<div class="col-lg-12 col-md-12">
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+				<header>
+				<img src="{{shirts[shirtIndex].url}}" class="img-responsive">
+				<h1> Shirt </h1>
+				</header>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+				<header>
+				<img src="{{pants[pantIndex].url}}" class="img-responsive">
+				<h1> Pants </h1>
+				</header>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+				<header>
+				<img src="{{shoes[shoeIndex].url}}" class="img-responsive">
+				<h1> Shoes </h1>
+				</header>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+				<header>
+				<img src="{{jackets[jacketIndex].url}}" class="img-responsive">
+				<h1> Jackets </h1>
+				</header>
+			</div>
+			</div>
+		</div>
+
+		<div id="center">
+				<div class="col-lg-12">
+					<button ng-click="message='Selection Saved!'; $window.location.reload();">Save Selection</button>
+					<button ng-click="clear()">Clear Wardrobe</button>
+					<p id="center"> <br><br>{{message}}</p>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+	<!-- Footer -->
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="12u">
+					<section class="contact">
+						<a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
+						<p>&copy;  2015 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin</a>.</p>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

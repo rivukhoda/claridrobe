@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.dropotron.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.onvisible.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+</head>
+
+<body ng-controller="MainController" class="homepage">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<div id="header">
+
+			<!-- Inner -->
+			<div class="inner">
+				<header>
+					<h1><a href="index.html" id="logo">Clairidrobe</a></h1>
+						<hr />
+						<p>Concordia University Hacks 2016</p>
+				</header>
+				<footer>
+					<a href="#banner" class="button circled scrolly">Start</a>
+				</footer>
+			</div>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="Gallery.html">Gallery</a></li>
+					<li><a href="Outfits.html">Outfit</a></li>
+					<li><a href="Styles.html">Styles</a></li>
+					<li><a href="Upload.html">Upload</a></li>
+				</ul>
+			</nav>
+
+		</div>
+
+		<!-- Banner -->
+		<section id="banner">
+			<header>
+				<h2>Hi. Welcome to <strong>Clairidrobe</strong>!</h2>
+				<p> Clairidrobe is a web app designed to catalogue your clothes in your wardrobe and automatically generate outfits that suit your everyday style.
+				</p>
+			</header>
+			<footer>
+				<a href="Gallery.html" class="button">View Gallery</a>
+				<a href="Outfits.html" class="button">Generate Outfits</a>
+			</footer>
+		</section>
+
+<hr>
+
+		<div class="wrapper style1">
+
+			<article id="main" class="container special">
+				<!-- <a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a> -->
+				<header>
+					<h2>Here's an example...</h2>
+				</header>
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<header>
+							<img class="img-responsive" id="front" src="http://image1.superdry.com/static/images/products/upload6297972240208438043.jpg" />
+						</header>
+					</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+					<ul class="list-inline tag-predictions">
+						<li class="tag">isolated</li>
+						<li class="tag">fashion</li>
+						<li class="tag">jacket</li>
+						<li class="tag">man</li>
+						<li class="tag">wear</li>
+						<li class="tag">business</li>
+						<li class="tag">suit</li>
+						<li class="tag">contemporary</li>
+						<li class="tag">elegant</li>
+						<li class="tag">casual</li>
+					 </ul>
+				</div>
+
+			</article>
+
+		</div>	
+
+		<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="12u">
+						<section class="contact">
+						<a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
+						<p>&copy;  2015 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin.</a></p></section>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+<!-- <div ng-controller="MainController" ng-init="shirts=shirts[1].value;pants=pants[1].value;shoes=shoes[1].value"> -->
