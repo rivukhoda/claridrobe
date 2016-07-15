@@ -57,7 +57,7 @@
 						<!-- Main -->
 						<h1>Shirts</h1>
 						<div id="main">
-							<article ng-repeat="s in shirts" class="thumb">
+							<article ng-repeat="s in shirts track by $id(s)" class="thumb">
 								<a href="{{s.url}}" class="image"><img src="{{s.url}}" /></a>
 								<h2>{{s.value}}</h2>
 							</article>
@@ -100,19 +100,19 @@
 		</article>
 	</div>
 
-				<!-- Footer -->
-				<div id="footer">
-					<div class="container">
-						<div class="row">
-							<div class="12u">
-								<section class="contact">
-									<a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
-									<p>&copy;  2015 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin</a>.</p>
-								</section>
-							</div>
-						</div>
-					</div>
-				</div>
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="12u">
+                    <section class="contact">
+                        <a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
+                        <p>&copy;  2015 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin</a>.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 	<script src="assets/js/jquery.min.js"></script>
