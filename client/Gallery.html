@@ -57,7 +57,7 @@
 						<!-- Main -->
 						<h1>Shirts</h1>
 						<div id="main">
-							<article ng-repeat="s in shirts track by $id(s)" class="thumb">
+							<article ng-repeat="s in shirts track by $index" class="thumb">
 								<a href="{{s.url}}" class="image"><img src="{{s.url}}" /></a>
 								<h2>{{s.value}}</h2>
 							</article>

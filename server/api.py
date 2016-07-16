@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, json, request
+from flask import Flask, jsonify, json, request, Response
 from flask_pymongo import PyMongo
 from bson import json_util
 from clarifai.client import ClarifaiApi
@@ -19,14 +19,14 @@ def get_all_images():
 @app.route('/images/<category_of_clothing>', methods=['GET'])
 def get_images(category_of_clothing):
     images = list(mongo.db.images.find({"tag": category_of_clothing}))
-    response = json.dumps(images, default=json_util.default)
-    return jsonify(response)
+    #response = json.dumps(images, default=json_util.default)
+    #return jsonify(response)
+    return Response(json.dumps(images, default=json_util.default), mimetype='application/json')
 
 @app.route('/images/delete_all', methods=['DELETE'])
 def delete_all_images():
     mongo.db.images.delete_many({})
     return jsonify(status=200, message="success")
-
 
 @app.route('/upload', methods=['POST'])
 def store_image():
