@@ -57,9 +57,9 @@
 						<!-- Main -->
 						<h1>Shirts</h1>
 						<div id="main">
-							<article ng-repeat="s in shirts track by $index" class="thumb">
-								<a href="{{s.url}}" class="image"><img src="{{s.url}}" /></a>
-								<h2>{{s.value}}</h2>
+							<article ng-repeat="shirt in shirts track by $index" class="thumb">
+								<a href="{{shirt.url}}" class="image"><img src="{{shirt.url}}" /></a>
+								<h2>{{shirt.value}}</h2>
 							</article>
 						</div>	
 					</div>
@@ -67,8 +67,8 @@
 						<!-- Main -->
 						<h1>Pants</h1>
 						<div id="main">
-							<article ng-repeat="p in pants" class="thumb">
-								<a href="{{p.url}}" class="image"><img src="{{p.url}}" /></a>
+							<article ng-repeat="pant in pants track by $index" class="thumb">
+								<a href="{{pant.url}}" class="image"><img src="{{pant.url}}" /></a>
 								<h2>{{p.value}}</h2>
 							</article>
 						</div>	
@@ -77,8 +77,8 @@
 						<!-- Main -->
 						<h1>Shoes</h1>
 						<div id="main">
-							<article ng-repeat="q in shoes" class="thumb">
-								<a href="{{q.url}}" class="image"><img src="{{q.url}}" /></a>
+							<article ng-repeat="shoe in shoes track by $index" class="thumb">
+								<a href="{{shoe.url}}" class="image"><img src="{{shoe.url}}" /></a>
 								<h2>{{q.value}}</h2>
 							</article>
 						</div>	
@@ -87,8 +87,8 @@
 						<!-- Main -->
 						<h1>Jackets</h1>
 						<div id="main">
-							<article ng-repeat="x in jackets" class="thumb">
-								<a href="{{x.url}}" class="image"><img src="{{x.url}}" /></a>
+							<article ng-repeat="jacket in jackets track by $index" class="thumb">
+								<a href="{{jacket.url}}" class="image"><img src="{{jacket.url}}" /></a>
 								<h2>{{x.value}}</h2>
 							</article>
 						</div>	
