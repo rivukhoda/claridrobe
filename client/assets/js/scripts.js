@@ -2,10 +2,6 @@ function MainController($scope, $http) {
 
     $scope.date = new Date();
 
-    $scope.getRandomIndex = function (length) {
-        return Math.floor(Math.random() * length);
-    };
-
     $scope.clear = function () {
         $http.get('http://localhost:5000/delete_all')
             .success(function (data) {
@@ -16,7 +12,6 @@ function MainController($scope, $http) {
                 $scope.message = [{heading: "Error", description: "Could not load json data..."}];
             });
     };
-
 
     $scope.saveOutfit = function () {
         $http({
@@ -29,7 +24,8 @@ function MainController($scope, $http) {
                     {'oid': $scope.pants[$scope.pantIndex]._id.$oid},
                     {'oid': $scope.jackets[$scope.jacketIndex]._id.$oid},
                     {'oid': $scope.shoes[$scope.shoeIndex]._id.$oid}
-                ]
+                ],
+                'date': $scope.date
             }
         }).then(function successCallback(response) {
             $scope.message = 'Outfit Saved!'
@@ -39,12 +35,18 @@ function MainController($scope, $http) {
     };
 
 
-    $scope.shirtIndex = 0;
-    $scope.pantIndex = 0;
-    $scope.shoeIndex = 0;
-    $scope.jacketIndex = 0;
-
-
+    $scope.generateRandomOutfit = function () {
+        
+        $scope.shirtIndex = generateRandomIndex($scope.shirts.length);
+        $scope.pantIndex = generateRandomIndex($scope.pants.length);
+        $scope.jacketIndex = generateRandomIndex($scope.jackets.length);
+        $scope.shoeIndex = generateRandomIndex($scope.shoes.length);
+        
+        function generateRandomIndex (maxValue) {
+            return Math.floor(Math.random() * maxValue)
+        }
+    };
+    
     $http.get('http://localhost:5000/images/shirt')
         .success(function (data) {
             $scope.shirts = data;
