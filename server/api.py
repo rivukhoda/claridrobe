@@ -19,21 +19,20 @@ def get_all_images():
 @app.route('/images/<category_of_clothing>', methods=['GET'])
 def get_images(category_of_clothing):
     images = list(mongo.db.images.find({"tag": category_of_clothing}))
-    #response = json.dumps(images, default=json_util.default)
-    #return jsonify(response)
-    return Response(json.dumps(images, default=json_util.default), mimetype='application/json')
+    json_images = json.dumps(images, default=json_util.default)
+    return Response(json_images, mimetype='application/json')
 
 @app.route('/images/delete_all', methods=['DELETE'])
 def delete_all_images():
     mongo.db.images.delete_many({})
-    return jsonify(status=200, message="success")
+    return jsonify(status=200, message="images deleted successfuly")
 
 @app.route('/upload', methods=['POST'])
 def store_image():
     image_metadata = request.get_json()
     image_metadata['tag'] = classify_clothing(image_metadata['url'])
     mongo.db.images.insert(image_metadata)
-    return jsonify(status=200, message="success")
+    return jsonify(status=200, message="image uploaded successfully")
 
 def classify_clothing(image_url):
     categories_of_clothes = ['shirt', 'pants', 'jacket', 'footwear']
@@ -43,6 +42,13 @@ def classify_clothing(image_url):
     for category_of_clothing in categories_of_clothes:
         if category_of_clothing in generated_classes_of_clothes:
             return category_of_clothing
+
+@app.route('/save', methods=['POST'])
+def save_outfit():
+    outfit = request.get_json()
+    mongo.db.outfits.insert(outfit)
+    return jsonify(status=200, message="outfit saved successfully")
+
 
 if __name__ == "__main__":
     app.run()

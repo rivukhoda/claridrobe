@@ -17,11 +17,19 @@ function MainController($scope, $http) {
     };
 
 
-    $scope.save = function () {
+    $scope.saveOutfit = function () {
         $http({
             method: 'POST',
-            url: 'http://localhost:8080/image/save',
-            data: 'field1'
+            url: 'http://localhost:5000/save',
+            headers: {'Content-Type': 'application/json'},
+            data: {
+                'outfit': [
+                    {'oid': $scope.shirts[$scope.shirtIndex]._id.$oid},
+                    {'oid': $scope.pants[$scope.pantIndex]._id.$oid},
+                    {'oid': $scope.jackets[$scope.jacketIndex]._id.$oid},
+                    {'oid': $scope.shoes[$scope.shoeIndex]._id.$oid}
+                ]
+            }
         }).then(function successCallback(response) {
             $scope.message = 'Outfit Saved!'
         }, function errorCallback(response) {
