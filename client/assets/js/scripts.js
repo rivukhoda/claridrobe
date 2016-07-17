@@ -51,7 +51,7 @@ function MainController($scope, $http) {
 
     $http.get('http://localhost:5000/images/shirt')
         .success(function (data) {
-            $scope.shirts = data
+            $scope.shirts = data;
         })
         .error(function (data, status, error, config) {
             $scope.shirts = [{heading: "Error", description: "Could not load json data"}];
