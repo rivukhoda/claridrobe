@@ -2,111 +2,112 @@
 <html ng-app>
 
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css"></link>
-	<link rel="stylesheet" href="assets/css/gallery.css">
-	<link rel="stylesheet" href="assets/css/styles.css">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="assets/css/gallery.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
 
 <body ng-controller="StyleCtl" ng-init="shirtIndex=0;pantIndex=0;shoeIndex=0" class="nosidebar">
 
 <div id="page-wrapper wrapper">
 
-	<!-- Header -->
-	<div id="header">
+    <!-- Header -->
+    <div id="header">
 
-		<!-- Inner -->
-		<div class="inner">
-			<header>
-				<h1><a href="index.html" id="logo">Clairidrobe</a></h1>
-									<header>
-					<h2 id="title">Favorite Styles</h2>
-				</header>
-			</header>
-		</div>
+        <!-- Inner -->
+        <div class="inner">
+            <header>
+                <h1><a href="index.html" id="logo">Clairidrobe</a></h1>
+                <header>
+                    <h2 id="title">Favorite Styles</h2>
+                </header>
+            </header>
+        </div>
 
-		<!-- Nav -->
-		<nav id="nav">
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="Gallery.html">Gallery</a></li>
-				<li><a href="Outfits.html">Outfit</a></li>
-				<li><a href="Styles.html">Styles</a></li>
-				<li><a href="Upload.html">Upload</a></li>
-			</ul>
-		</nav>
-	</div>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="Outfits.html">Outfit</a></li>
+                <li><a href="Styles.html">Styles</a></li>
+                <li><a href="Upload.html">Upload</a></li>
+            </ul>
+        </nav>
+    </div>
 
 
-	<section id="content" class="content-section">
+    <section id="content" class="content-section">
 
-		<section id="banner" class="gallery">
-			<header>
-				<h2>Hi. Welcome to <strong>Clairidrobe!</strong></h2>
-				<p> Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong> and the weather is <strong>-10&deg;C</strong> in <strong>Montreal.</strong> Here are all of your favorite outfits!</p>
-			</header>
-		</section>
+        <section id="banner" class="gallery">
+            <header>
+                <h2>Hi. Welcome to <strong>Clairidrobe!</strong></h2>
+                <p> Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong> and the weather is
+                    <strong>-10&deg;C</strong> in <strong>Montreal.</strong> Here are all of your favorite outfits!</p>
+            </header>
+        </section>
 
-			<div class="container">
-				<h1>Saved Outfits</h1>
-				<div ng-repeat="s in saved"class="row">
-					<div class="col-lg-12 col-xs-12">
-						<!-- Main -->
-						<div   id="main">
-							<div class="col-lg-12 col-xs-12">
-								<h3>{{s.date}}</h3>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-								<header class="image">
-									<img src="{{s.shirt}}" class="img-responsive">
-								</header>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-								<header  class="image">
-									<img src="{{s.pant}}" class="img-responsive">
-								</header>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-								<header class="image">
-									<img src="{{s.jacket}}" class="img-responsive">
-								</header>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-								<header class="image">
-									<img src="{{s.shoe}}" class="img-responsive">
-								</header>
-							</div>
-						</div>	
-					</div>
-				</div>
-			</div>
+        <div class="container">
+            <h1>Saved Outfits</h1>
+            <div ng-repeat="s in saved" class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <!-- Main -->
+                    <div id="main">
+                        <div class="col-lg-12 col-xs-12">
+                            <h3>{{ s.date }}</h3>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <header class="image">
+                                <img src="{{ s.shirt }}" class="img-responsive">
+                            </header>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <header class="image">
+                                <img src="{{ s.pant }}" class="img-responsive">
+                            </header>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <header class="image">
+                                <img src="{{ s.jacket }}" class="img-responsive">
+                            </header>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <header class="image">
+                                <img src="{{ s.shoe }}" class="img-responsive">
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</section>
+    </section>
 
-	<!-- Footer -->
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="12u">
-					<section class="contact">
-						<a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
-						<p>&copy;  2015 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin.</a></p>
-					</section>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="12u">
+                    <section class="contact">
+                        <a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
+                        <p>&copy; 2015 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin.</a></p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
-	<script src="assets/js/gallery.js"></script>
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/gallery.js"></script>
+<script src="assets/js/jquery.poptrox.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
 </body>
 </html>
