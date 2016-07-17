@@ -79,7 +79,7 @@ function MainController($scope, $http) {
 
 }
 
-function StyleCtl($scope, $http) {
+function StyleController($scope, $http) {
 
     $scope.date = new Date();
     $scope.saved = null;
