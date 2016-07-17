@@ -34,22 +34,27 @@ function MainController($scope, $http) {
         });
     };
 
+    // $scope.shirtIndex = 0;
+    // $scope.pantIndex = 0;
+    // $scope.jacketIndex = 0;
+    // $scope.shoeIndex = 0;
 
     $scope.generateRandomOutfit = function () {
-        
+
         $scope.shirtIndex = generateRandomIndex($scope.shirts.length);
         $scope.pantIndex = generateRandomIndex($scope.pants.length);
         $scope.jacketIndex = generateRandomIndex($scope.jackets.length);
         $scope.shoeIndex = generateRandomIndex($scope.shoes.length);
-        
-        function generateRandomIndex (maxValue) {
-            return Math.floor(Math.random() * maxValue)
-        }
+    };
+
+    function generateRandomIndex(maxValue) {
+        return Math.floor(Math.random() * maxValue)
     };
     
     $http.get('http://localhost:5000/images/shirt')
         .success(function (data) {
             $scope.shirts = data;
+            $scope.shirtIndex = generateRandomIndex($scope.shirts.length);
         })
         .error(function (data, status, error, config) {
             $scope.shirts = [{heading: "Error", description: "Could not load json data"}];
@@ -57,6 +62,7 @@ function MainController($scope, $http) {
     $http.get('http://localhost:5000/images/pants')
         .success(function (data) {
             $scope.pants = data;
+            $scope.pantIndex = generateRandomIndex($scope.pants.length);
         })
         .error(function (data, status, error, config) {
             $scope.pants = [{heading: "Error", description: "Could not load json data"}];
@@ -64,6 +70,7 @@ function MainController($scope, $http) {
     $http.get('http://localhost:5000/images/footwear')
         .success(function (data) {
             $scope.shoes = data;
+            $scope.shoeIndex = generateRandomIndex($scope.shoes.length);
         })
         .error(function (data, status, error, config) {
             $scope.shoes = [{heading: "Error", description: "Could not load json data"}];
@@ -71,11 +78,11 @@ function MainController($scope, $http) {
     $http.get('http://localhost:5000/images/jacket')
         .success(function (data) {
             $scope.jackets = data;
+            $scope.jacketIndex = generateRandomIndex($scope.jackets.length);
         })
         .error(function (data, status, error, config) {
             $scope.jackets = [{heading: "Error", description: "Could not load json data"}];
         });
-
 
 }
 
