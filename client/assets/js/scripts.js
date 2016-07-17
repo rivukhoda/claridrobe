@@ -1,6 +1,6 @@
 function MainController($scope, $http) {
     $scope.date = new Date();
-    $scope.savemessage = "";
+
     $scope.getRandomIndex = function (length) {
         return Math.floor(Math.random() * length);
     }
@@ -79,7 +79,8 @@ function MainController($scope, $http) {
         });
 
 
-};
+}
+
 function StyleCtl($scope, $http) {
     $scope.saved = null;
     $http.get('assets/json/saved.json')
