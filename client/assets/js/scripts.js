@@ -78,7 +78,10 @@ function MainController($scope, $http) {
 }
 
 function StyleCtl($scope, $http) {
+
+    $scope.date = new Date();
     $scope.saved = null;
+
     $http.get('assets/json/saved.json')
         .success(function (data) {
             $scope.saved = data;
