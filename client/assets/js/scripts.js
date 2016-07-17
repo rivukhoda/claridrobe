@@ -1,9 +1,10 @@
 function MainController($scope, $http) {
+
     $scope.date = new Date();
 
     $scope.getRandomIndex = function (length) {
         return Math.floor(Math.random() * length);
-    }
+    };
 
     $scope.clear = function () {
         $http.get('http://localhost:5000/delete_all')
@@ -42,11 +43,6 @@ function MainController($scope, $http) {
     $scope.pantIndex = 0;
     $scope.shoeIndex = 0;
     $scope.jacketIndex = 0;
-
-    $scope.shirts = null;
-    $scope.pants = null;
-    $scope.shoes = null;
-    $scope.jackets = null;
 
 
     $http.get('http://localhost:5000/images/shirt')
@@ -103,7 +99,7 @@ function UploadController($scope, $http) {
                 $scope.field1 = [{heading: "Error", description: "Could not load json data"}];
             });
     }
-};
+}
 
 var upload = angular.module('Upload', []);
 
