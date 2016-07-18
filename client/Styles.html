@@ -51,31 +51,31 @@
 
         <div class="container">
             <h1>Saved Outfits</h1>
-            <div ng-repeat="s in saved" class="row">
+            <div ng-repeat="outfit in savedOutfits" class="row">
                 <div class="col-lg-12 col-xs-12">
                     <!-- Main -->
                     <div id="main">
                         <div class="col-lg-12 col-xs-12">
-                            <h3>{{ s.date }}</h3>
+                            <h3>{{ outfit.date | date: MM/dd/yyyy }}</h3>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <header class="image">
-                                <img src="{{ s.shirt }}" class="img-responsive">
+                                <img src="{{ outfit.clothes[0].url }}" class="img-responsive">
                             </header>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <header class="image">
-                                <img src="{{ s.pant }}" class="img-responsive">
+                                <img src="{{ outfit.clothes[1].url }}" class="img-responsive">
                             </header>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <header class="image">
-                                <img src="{{ s.jacket }}" class="img-responsive">
+                                <img src="{{ outfit.clothes[2].url }}" class="img-responsive">
                             </header>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <header class="image">
-                                <img src="{{ s.shoe }}" class="img-responsive">
+                                <img src="{{ outfit.clothes[3].url }}" class="img-responsive">
                             </header>
                         </div>
                     </div>

@@ -16,14 +16,14 @@ function MainController($scope, $http) {
     $scope.saveOutfit = function () {
         $http({
             method: 'POST',
-            url: 'http://localhost:5000/save',
+            url: 'http://localhost:5000/outfits',
             headers: {'Content-Type': 'application/json'},
             data: {
-                'outfit': [
-                    {'oid': $scope.shirts[$scope.shirtIndex]._id.$oid},
-                    {'oid': $scope.pants[$scope.pantIndex]._id.$oid},
-                    {'oid': $scope.jackets[$scope.jacketIndex]._id.$oid},
-                    {'oid': $scope.shoes[$scope.shoeIndex]._id.$oid}
+                'clothes': [
+                    {'url': $scope.shirts[$scope.shirtIndex].url},
+                    {'url': $scope.pants[$scope.pantIndex].url},
+                    {'url': $scope.jackets[$scope.jacketIndex].url},
+                    {'url': $scope.shoes[$scope.shoeIndex].url}
                 ],
                 'date': $scope.date
             }
@@ -33,11 +33,6 @@ function MainController($scope, $http) {
             $scope.message = 'Save Failed...'
         });
     };
-
-    // $scope.shirtIndex = 0;
-    // $scope.pantIndex = 0;
-    // $scope.jacketIndex = 0;
-    // $scope.shoeIndex = 0;
 
     $scope.generateRandomOutfit = function () {
 
@@ -50,7 +45,7 @@ function MainController($scope, $http) {
     function generateRandomIndex(maxValue) {
         return Math.floor(Math.random() * maxValue)
     };
-    
+
     $http.get('http://localhost:5000/images/shirt')
         .success(function (data) {
             $scope.shirts = data;
@@ -91,12 +86,12 @@ function StyleController($scope, $http) {
     $scope.date = new Date();
     $scope.saved = null;
 
-    $http.get('assets/json/saved.json')
+    $http.get('http://localhost:5000/outfits', {headers: {'Content-Type': 'application/json'}})
         .success(function (data) {
-            $scope.saved = data;
+            $scope.savedOutfits = data;
         })
         .error(function (data, status, error, config) {
-            $scope.saved = [{heading: "Error", description: "Could not load json data"}];
+            $scope.savedOutfits = [{heading: "Error", description: "Could not load json data"}];
         });
 }
 
@@ -104,7 +99,7 @@ function UploadController($scope, $http) {
     $scope.field1 = "foo";
     $scope.submit = function () {
         var data = JSON.stringify({'url': $scope.field1});
-        $http.post("http://localhost:5000/upload", data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
+        $http.post('http://localhost:5000/upload', data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
             $scope.field1 = "success";
         })
             .error(function (data, status, error, config) {
