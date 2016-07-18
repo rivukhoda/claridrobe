@@ -2,79 +2,81 @@
 <html ng-app="Upload">
 
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/styles.css">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
 
 <body ng-controller="UploadController" ng-init="shirtIndex=0;pantIndex=0;shoeIndex=0" class="nosidebar">
 
-	<div id="page-wrapper wrapper">
-		<!-- Header -->
-		<div id="header">
+<div id="page-wrapper wrapper">
+    <!-- Header -->
+    <div id="header">
 
-			<!-- Inner -->
-			<div class="inner">
-				<header>
-					<h1><a href="index.html" id="logo">Clairidrobe</a></h1>
-										<header>
-						<h2 id="title">Upload to your Wardrobe!</h2>
-					</header>
-				</header>
-			</div>
+        <!-- Inner -->
+        <div class="inner">
+            <header>
+                <h1><a href="index.html" id="logo">Clairidrobe</a></h1>
+                <header>
+                    <h2 id="title">Upload to your Wardrobe!</h2>
+                </header>
+            </header>
+        </div>
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="Gallery.html">Gallery</a></li>
-					<li><a href="Outfits.html">Outfit</a></li>
-					<li><a href="Styles.html">Styles</a></li>
-					<li><a href="Upload.html">Upload</a></li>
-				</ul>
-			</nav>
-			</div>
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="Outfits.html">Outfit</a></li>
+                <li><a href="Styles.html">Styles</a></li>
+                <li><a href="Upload.html">Upload</a></li>
+            </ul>
+        </nav>
+    </div>
 
 
-			<section id="content" class="content-section">
-				<div class="container">
-					<div class="row">
-						<div id="uploadform" class="col-lg-12 col-xs-12">
-							<form ng-submit="submit()">
-            					<input type="url" name="url" ng-model="field1" http-prefix>
-                				<button type="submit">Submit</button>
-        					</form>
-						</div>
-						<div class="col-lg-12 col-xs-12">
-							<h2>Image Preview: </h2>
-							<img src="{{field1}}" />
-						</div>
-					</div>
-				</div>
-			</section>
+    <section id="content" class="content-section">
+        <div class="container">
+            <div class="row">
+                <div id="uploadform" class="col-lg-12 col-xs-12">
+                    <form ng-submit="submit()">
+                        <input type="url" name="url" ng-model="field1" http-prefix>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="col-lg-12 col-xs-12">
+                    <h2>Image Preview: </h2>
+                    <img src="{{ field1 }}"/>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			<!-- Footer -->
-		<div id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="12u">
-						<section class="contact">
-							<a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
-							<p>&copy;  2016 <a href="http://susmcgill.com" target="_blank">Rivu and Marvin.</a></p>
-						</section>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="12u">
+                    <section class="contact">
+                        <a href="https://github.com/rivukhoda/clari-drobe" class="icon fa fa-github"></a>
+                        <p>&copy; 2016
+                            <a href="https://ca.linkedin.com/in/rivukhoda" target="_blank">Rivu</a> and
+                            <a href="https://ca.linkedin.com/in/marvin-wu-23135772" target="_blank">Marvin</a>.
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
-	<script src="assets/js/gallery.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/gallery.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>
