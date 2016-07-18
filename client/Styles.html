@@ -58,24 +58,11 @@
                         <div class="col-lg-12 col-xs-12">
                             <h3>{{ outfit.date | date: MM/dd/yyyy }}</h3>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <div ng-repeat="item in outfit.clothes track by $index"
+                             class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+
                             <header class="image">
-                                <img src="{{ outfit.clothes[0].url }}" class="img-responsive">
-                            </header>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <header class="image">
-                                <img src="{{ outfit.clothes[1].url }}" class="img-responsive">
-                            </header>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <header class="image">
-                                <img src="{{ outfit.clothes[2].url }}" class="img-responsive">
-                            </header>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <header class="image">
-                                <img src="{{ outfit.clothes[3].url }}" class="img-responsive">
+                                <img src="{{ item.url }}" class="img-responsive">
                             </header>
                         </div>
                     </div>
