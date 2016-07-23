@@ -59,13 +59,13 @@
             <div class="row">
                 <div id="uploadform" class="col-lg-12 col-xs-12">
                     <form ng-submit="submit()">
-                        <input type="url" name="url" ng-model="field1" http-prefix>
+                        <input type="url" ng-model="field" http-prefix>
                         <button type="submit">Submit</button>
                     </form>
                 </div>
                 <div class="col-lg-12 col-xs-12">
                     <h2>Image Preview: </h2>
-                    <img ng-src="{{ field1 }}"/>
+                    <img ng-src="{{ field }}"/>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
 
 </div>
 
-<toaster-container toaster-options="{'time-out': 500}"></toaster-container>
+<toaster-container toaster-options="{'time-out': 1000}"></toaster-container>
 
 </body>
 </html>

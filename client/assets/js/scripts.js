@@ -96,9 +96,9 @@ function StyleController($scope, $http) {
 }
 
 function UploadController($scope, $http, toaster) {
-    $scope.field1 = "foo";
+    $scope.field = "enter_your_link_to_image_that_you_want_to_upload";
     $scope.submit = function () {
-        var data = JSON.stringify({'url': $scope.field1});
+        var data = JSON.stringify({'url': $scope.field});
         $http.post('http://localhost:5000/upload', data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
             toaster.success("Success", "Upload complete!");
         })
