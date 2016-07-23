@@ -17,6 +17,12 @@
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js" async></script>
     <script src="assets/js/main.js" async></script>
+
+    <!-- Angular toaster dependencies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
 </head>
 
 <body ng-controller="UploadController" class="nosidebar">
@@ -59,7 +65,7 @@
                 </div>
                 <div class="col-lg-12 col-xs-12">
                     <h2>Image Preview: </h2>
-                    <img src="{{ field1 }}"/>
+                    <img ng-src="{{ field1 }}"/>
                 </div>
             </div>
         </div>
@@ -83,6 +89,8 @@
     </div>
 
 </div>
+
+<toaster-container toaster-options="{'time-out': 3000, 'closeButton': true}"></toaster-container>
 
 </body>
 </html>

@@ -95,20 +95,20 @@ function StyleController($scope, $http) {
         });
 }
 
-function UploadController($scope, $http) {
+function UploadController($scope, $http, toaster) {
     $scope.field1 = "foo";
     $scope.submit = function () {
         var data = JSON.stringify({'url': $scope.field1});
         $http.post('http://localhost:5000/upload', data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
-            $scope.field1 = "success";
+            toaster.success("Success", "Upload complete!");
         })
             .error(function (data, status, error, config) {
-                $scope.field1 = [{heading: "Error", description: "Could not load json data"}];
+                toaster.error("Error", "Could not load json data.");
             });
     }
 }
 
-var upload = angular.module('Upload', []);
+var upload = angular.module('Upload', ['toaster', 'ngAnimate']);
 
 upload.directive('httpPrefix', function () {
     return {
