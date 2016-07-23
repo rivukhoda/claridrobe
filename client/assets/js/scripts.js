@@ -103,7 +103,7 @@ function UploadController($scope, $http, toaster) {
             toaster.success("Success", "Upload complete!");
         })
             .error(function (data, status, error, config) {
-                toaster.error("Error", "Could not load json data.");
+                toaster.error("Error", "Oups, something went wrong, try again in a few minutes.");
             });
     }
 }
