@@ -3,7 +3,7 @@ function MainController($scope, $http) {
     $scope.date = new Date();
 
     $scope.clear = function () {
-        $http.get('http://localhost:5000/delete_all')
+        $http.delete('http://localhost:5000/delete_all')
             .success(function (data) {
                 $scope.message = 'Wardrobe Cleared!';
                 $window.location.reload();
@@ -93,6 +93,8 @@ function StyleController($scope, $http) {
         .error(function (data, status, error, config) {
             $scope.savedOutfits = [{heading: "Error", description: "Could not load json data"}];
         });
+
+
 }
 
 function UploadController($scope, $http, toaster) {
