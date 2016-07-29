@@ -66,7 +66,7 @@ def get_all_outfits():
 
 @app.route('/outfits/<oid>', methods=['DELETE'])
 def delete_outfit(oid):
-    data = mongo.db.outfits.delete_one({"_id": ObjectId(oid)})
+    mongo.db.outfits.delete_one({"_id": ObjectId(oid)})
     return jsonify(status=200, message="outfit deleted successfully")
 
 
