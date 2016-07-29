@@ -1,3 +1,5 @@
+var host = 'http://localhost:5000/';
+
 function MainController($scope, $http) {
 
     $scope.date = new Date();
@@ -97,7 +99,7 @@ function StyleController($scope, $http) {
     $scope.deleteOutfit = function () {
         $scope.savedOutfits.splice(this.$index, 1);
         var oid = this.outfit._id.$oid;
-        $http.delete('http://localhost:5000/outfits/' + oid, {headers: {'Content-Type': 'application/json'}});
+        $http.delete(host + 'outfits/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 
 }
@@ -106,7 +108,7 @@ function UploadController($scope, $http, toaster) {
     $scope.field = "enter_your_link_to_image_that_you_want_to_upload";
     $scope.submit = function () {
         var data = JSON.stringify({'url': $scope.field});
-        $http.post('http://localhost:5000/upload', data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
+        $http.post(host + 'images', data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
             toaster.success("Success", "Upload complete!");
         })
             .error(function (data, status, error, config) {
