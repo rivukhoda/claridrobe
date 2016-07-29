@@ -45,9 +45,9 @@ def classify_clothing(image_url):
     possible_categories = clarifai_api.tag_image_urls(image_url)
     generated_classes_of_clothes = possible_categories['results'][0]['result']['tag']['classes']
 
-    for category_of_clothing in categories_of_clothes:
-        if category_of_clothing in generated_classes_of_clothes:
-            return category_of_clothing
+    for type_of_clothing in generated_classes_of_clothes:
+        if type_of_clothing in categories_of_clothes:
+            return type_of_clothing
 
 
 @app.route('/outfits', methods=['POST'])
