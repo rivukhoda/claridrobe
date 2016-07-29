@@ -5,7 +5,7 @@ function MainController($scope, $http) {
     $scope.date = new Date();
 
     $scope.clear = function () {
-        $http.delete('http://localhost:5000/images')
+        $http.delete(host + 'images')
             .success(function (data) {
                 $scope.message = 'Wardrobe Cleared!';
                 $window.location.reload();
@@ -18,7 +18,7 @@ function MainController($scope, $http) {
     $scope.saveOutfit = function () {
         $http({
             method: 'POST',
-            url: 'http://localhost:5000/outfits',
+            url: host + 'outfits',
             headers: {'Content-Type': 'application/json'},
             data: {
                 'clothes': [
@@ -48,7 +48,7 @@ function MainController($scope, $http) {
         return Math.floor(Math.random() * maxValue)
     };
 
-    $http.get('http://localhost:5000/images/shirt')
+    $http.get(host + 'images/shirt')
         .success(function (data) {
             $scope.shirts = data;
             $scope.shirtIndex = generateRandomIndex($scope.shirts.length);
@@ -56,7 +56,7 @@ function MainController($scope, $http) {
         .error(function (data, status, error, config) {
             $scope.shirts = [{heading: "Error", description: "Could not load json data"}];
         });
-    $http.get('http://localhost:5000/images/pants')
+    $http.get(host + 'images/pants')
         .success(function (data) {
             $scope.pants = data;
             $scope.pantIndex = generateRandomIndex($scope.pants.length);
@@ -64,7 +64,7 @@ function MainController($scope, $http) {
         .error(function (data, status, error, config) {
             $scope.pants = [{heading: "Error", description: "Could not load json data"}];
         });
-    $http.get('http://localhost:5000/images/footwear')
+    $http.get(host + 'images/footwear')
         .success(function (data) {
             $scope.shoes = data;
             $scope.shoeIndex = generateRandomIndex($scope.shoes.length);
@@ -72,7 +72,7 @@ function MainController($scope, $http) {
         .error(function (data, status, error, config) {
             $scope.shoes = [{heading: "Error", description: "Could not load json data"}];
         });
-    $http.get('http://localhost:5000/images/jacket')
+    $http.get(host + 'images/jacket')
         .success(function (data) {
             $scope.jackets = data;
             $scope.jacketIndex = generateRandomIndex($scope.jackets.length);
@@ -88,7 +88,7 @@ function StyleController($scope, $http) {
     $scope.date = new Date();
     $scope.saved = null;
 
-    $http.get('http://localhost:5000/outfits', {headers: {'Content-Type': 'application/json'}})
+    $http.get(host + 'outfits', {headers: {'Content-Type': 'application/json'}})
         .success(function (data) {
             $scope.savedOutfits = data;
         })
