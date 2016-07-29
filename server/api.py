@@ -32,7 +32,7 @@ def delete_all_images():
     return jsonify(status=200, message="images deleted successfuly")
 
 
-@app.route('/upload', methods=['POST'])
+@app.route('/images', methods=['POST'])
 def store_image():
     image_metadata = request.get_json()
     image_metadata['tag'] = classify_clothing(image_metadata['url'])
@@ -62,6 +62,12 @@ def get_all_outfits():
     all_outfits = list(mongo.db.outfits.find())
     json_outfits = json.dumps(all_outfits, default=json_util.default)
     return Response(json_outfits, mimetype='application/json')
+
+
+@app.route('/outfits/<oid>', methods=['DELETE'])
+def delete_outfit(oid):
+    data = mongo.db.outfits.delete_one({"_id": ObjectId(oid)})
+    return jsonify(status=200, message="outfit deleted successfully")
 
 
 if __name__ == "__main__":
