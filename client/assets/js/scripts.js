@@ -3,7 +3,7 @@ function MainController($scope, $http) {
     $scope.date = new Date();
 
     $scope.clear = function () {
-        $http.delete('http://localhost:5000/delete_all')
+        $http.delete('http://localhost:5000/images')
             .success(function (data) {
                 $scope.message = 'Wardrobe Cleared!';
                 $window.location.reload();
@@ -94,16 +94,10 @@ function StyleController($scope, $http) {
             $scope.savedOutfits = [{heading: "Error", description: "Could not load json data"}];
         });
 
-    $scope.deleteOutfit = function() {
+    $scope.deleteOutfit = function () {
         $scope.savedOutfits.splice(this.$index, 1);
+        $http.delete('http://localhost:5000/outfits', {headers: {'Content-Type': 'application/json'}});
     };
-
-    $http.delete('http://localhost:5000/outfits', {headers: {'Content-Type': 'application/json'}})
-        .success(function (data) {
-        })
-        .error(function (data, status, error, config) {
-
-        });
 
 }
 

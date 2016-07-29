@@ -26,7 +26,7 @@ def get_images(category_of_clothing):
     return Response(json_images, mimetype='application/json')
 
 
-@app.route('/images/delete_all', methods=['DELETE'])
+@app.route('/images', methods=['DELETE'])
 def delete_all_images():
     mongo.db.images.delete_many({})
     return jsonify(status=200, message="images deleted successfuly")
