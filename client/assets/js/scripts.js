@@ -96,7 +96,8 @@ function StyleController($scope, $http) {
 
     $scope.deleteOutfit = function () {
         $scope.savedOutfits.splice(this.$index, 1);
-        $http.delete('http://localhost:5000/outfits', {headers: {'Content-Type': 'application/json'}});
+        var oid = this.outfit._id.$oid;
+        $http.delete('http://localhost:5000/outfits/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 
 }
