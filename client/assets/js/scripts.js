@@ -4,7 +4,7 @@ function MainController($scope, $http) {
 
     $scope.date = new Date();
 
-    $scope.clear = function () {
+    $scope.clearWardrobe = function () {
         $http.delete(host + 'images')
             .success(function (data) {
                 $scope.message = 'Wardrobe Cleared!';
