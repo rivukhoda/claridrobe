@@ -2,7 +2,7 @@ from flask import Flask, jsonify, json, request, Response
 from flask_pymongo import PyMongo
 from bson import json_util
 from clarifai.client import ClarifaiApi
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
