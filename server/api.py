@@ -4,6 +4,8 @@ from bson import json_util
 from clarifai.client import ClarifaiApi
 from flask_cors import CORS
 from bson.objectid import ObjectId
+import os
+import requests
 
 app = Flask(__name__)
 app.config.from_object('settings.DevelopmentConfig')
@@ -68,6 +70,16 @@ def get_all_outfits():
 def delete_outfit(oid):
     mongo.db.outfits.delete_one({"_id": ObjectId(oid)})
     return jsonify(status=200, message="outfit deleted successfully")
+
+
+@app.route('/weather', methods=['GET'])
+def get_weather_info():
+    url = 'https://api.forecast.io/forecast/'
+    latitude = request.args.get('latitude')
+    longitude = request.args.get('longitude')
+    api_key = os.environ['DARKSKY_API_ID']
+    forecast = requests.get(url + api_key + '/' + latitude + ',' + longitude)
+    return Response(forecast, mimetype='application/json')
 
 
 if __name__ == "__main__":
