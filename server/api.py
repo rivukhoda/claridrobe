@@ -77,7 +77,7 @@ def get_weather_info():
     url = 'https://api.forecast.io/forecast/'
     latitude = request.args.get('latitude')
     longitude = request.args.get('longitude')
-    api_key = os.environ['DARKSKY_API_ID']
+    api_key = app.config['DARKSKY_API_KEY']
     forecast = requests.get(url + api_key + '/' + latitude + ',' + longitude)
     return Response(forecast, mimetype='application/json')
 
