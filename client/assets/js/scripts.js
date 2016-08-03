@@ -81,15 +81,32 @@ function MainController($scope, $http) {
             $scope.jackets = [{heading: "Error", description: "Could not load json data"}];
         });
 
-    navigator.geolocation.getCurrentPosition(function (position) {
+    var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
+
+    function geo_success(position) {
         var latitude = 'latitude=' + position.coords.latitude;
         var longitude = 'longitude=' + position.coords.longitude;
-        var requestURL = host + 'weather?' + latitude + '&' + longitude;
-        $http.get(requestURL).then(function successCallback(response) {
+
+        var weatherURL = host + 'weather?' + latitude + '&' + longitude;
+
+        $http.get(weatherURL).then(function successCallback(response) {
             $scope.weather = response.data;
             console.log(response.data);
         });
-    });
+
+        var locationURL = host + 'location?' + latitude + '&' + longitude;
+
+        $http.get(locationURL).then(function successCallback(response) {
+            $scope.location = response.data;
+            console.log(response.data);
+        });
+    };
+
+    function geo_error(err) {
+        console.log(err.code + err.message);
+    };
+
+    navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 
 
 }
