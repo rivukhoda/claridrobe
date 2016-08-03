@@ -97,8 +97,11 @@ function MainController($scope, $http) {
         var locationURL = host + 'location?' + latitude + '&' + longitude;
 
         $http.get(locationURL).then(function successCallback(response) {
-            $scope.location = response.data;
-            console.log(response.data);
+
+            var area = response.data['results'][2]['address_components'][0]['short_name'];
+            var city = response.data['results'][2]['address_components'][1]['long_name'];
+
+            $scope.location = area + ', ' + city;
         });
     };
 
