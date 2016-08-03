@@ -4,7 +4,6 @@ from bson import json_util
 from clarifai.client import ClarifaiApi
 from flask_cors import CORS
 from bson.objectid import ObjectId
-import os
 import requests
 
 app = Flask(__name__)
