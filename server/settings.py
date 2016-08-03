@@ -15,6 +15,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     MONGO_DBNAME = 'database'
     DARKSKY_API_KEY = os.environ['DARKSKY_API_KEY']
+    GMAPS_API_KEY = os.environ['GMAPS_API_KEY']
 
 
 class TestingConfig(Config):

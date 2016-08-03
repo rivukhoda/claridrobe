@@ -82,5 +82,15 @@ def get_weather_info():
     return Response(forecast, mimetype='application/json')
 
 
+@app.route('/location', methods=['GET'])
+def get_current_location():
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='
+    latitude = request.args.get('latitude')
+    longitude = request.args.get('longitude')
+    api_key = app.config['GMAPS_API_KEY']
+    location = requests.get(url + latitude + ',' + longitude + '&key=' + api_key)
+    return Response(location, mimetype='application/json')
+
+
 if __name__ == "__main__":
     app.run(threaded=True)
