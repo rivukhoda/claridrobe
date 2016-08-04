@@ -90,12 +90,11 @@ function MainController($scope, $http) {
         var weatherURL = host + 'weather?' + latitude + '&' + longitude;
 
         $http.get(weatherURL).then(function successCallback(response) {
-            $scope.weather = response.data;
             var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
             var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5/9);
-            $scope.temperature = Math.ceil(temperatureInCelsius);
 
-            console.log($scope.temperature);
+            $scope.temperature = Math.ceil(temperatureInCelsius);
+            $scope.weather = response.data['currently']['summary'];
         });
 
         var locationURL = host + 'location?' + latitude + '&' + longitude;
