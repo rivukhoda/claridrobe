@@ -57,8 +57,11 @@
         <section id="banner">
             <header>
                 <h2>Hi. Welcome to <strong>Clairidrobe!</strong></h2>
-                <p> Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong> and the weather is
-                    <strong>-10&deg;C</strong> in <strong>Montreal.</strong> What would you like to wear today?</p>
+                <p>
+                    Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
+                    <strong>{{ weather }} and {{ temperature }}&deg;C</strong> in <strong>{{ location }}.</strong>
+                    <br> What would you like to wear today?
+                </p>
             </header>
             <footer>
                 <button ng-click="generateRandomOutfit()">
