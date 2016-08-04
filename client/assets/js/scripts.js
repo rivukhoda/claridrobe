@@ -91,7 +91,11 @@ function MainController($scope, $http) {
 
         $http.get(weatherURL).then(function successCallback(response) {
             $scope.weather = response.data;
-            console.log(response.data);
+            var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
+            var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5/9);
+            $scope.temperature = Math.ceil(temperatureInCelsius);
+
+            console.log($scope.temperature);
         });
 
         var locationURL = host + 'location?' + latitude + '&' + longitude;
@@ -100,7 +104,7 @@ function MainController($scope, $http) {
 
             var area = response.data['results'][1]['address_components'][0]['short_name'];
             var city = response.data['results'][1]['address_components'][1]['long_name'];
-            
+
             $scope.location = area + ', ' + city;
         });
     };
