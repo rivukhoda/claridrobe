@@ -98,9 +98,9 @@ function MainController($scope, $http) {
 
         $http.get(locationURL).then(function successCallback(response) {
 
-            var area = response.data['results'][2]['address_components'][0]['short_name'];
-            var city = response.data['results'][2]['address_components'][1]['long_name'];
-
+            var area = response.data['results'][1]['address_components'][0]['short_name'];
+            var city = response.data['results'][1]['address_components'][1]['long_name'];
+            
             $scope.location = area + ', ' + city;
         });
     };
