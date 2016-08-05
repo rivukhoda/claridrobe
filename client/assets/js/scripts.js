@@ -114,7 +114,9 @@ function MainController($scope, $http) {
 
     navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 
-
+    $scope.cool = function () {
+        window.alert("Hello World!");
+    }
 }
 
 function StyleController($scope, $http) {
