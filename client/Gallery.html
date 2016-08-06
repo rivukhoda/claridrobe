@@ -66,51 +66,20 @@
 
         <div class="container">
 
-            <div class="row">
-                <div class="col-lg-12 col-xs-12">
-
-                    <!-- Main -->
-                    <h1>Shirts</h1>
+            <div class="row" ng-repeat="clothing in clothes">
+                <div class="col-lg-12 col-xs-12" ng-repeat="(key,value) in clothing">
+                    <h1>{{ key }}</h1>
                     <div id="main">
-                        <article ng-repeat="shirt in shirts track by $index" class="thumb">
-                            <a href="{{ shirt.url }}" class="image"><img ng-src="{{ shirt.url }}"/></a>
+                        <article ng-repeat="instance in value track by $index" class="thumb">
+                            <a href="{{ instance.url }}" class="image"><img ng-src="{{ instance.url }}"/></a>
                             <a class="close-button icon fa fa-times-circle" ng-click="deleteClothing()"></a>
-                        </article>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-xs-12">
-                    <!-- Main -->
-                    <h1>Pants</h1>
-                    <div id="main">
-                        <article ng-repeat="pant in pants track by $index" class="thumb">
-                            <a href="{{ pant.url }}" class="image"><img ng-src="{{ pant.url }}"/></a>
-                            <a class="close-button icon fa fa-times-circle" ></a>
-                        </article>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-xs-12">
-                    <!-- Main -->
-                    <h1>Shoes</h1>
-                    <div id="main">
-                        <article ng-repeat="shoe in shoes track by $index" class="thumb">
-                            <a href="{{ shoe.url }}" class="image"><img ng-src="{{ shoe.url }}"/></a>
-                            <a class="close-button icon fa fa-times-circle" ></a>
-                        </article>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-xs-12">
-                    <!-- Main -->
-                    <h1>Jackets</h1>
-                    <div id="main">
-                        <article ng-repeat="jacket in jackets track by $index" class="thumb">
-                            <a href="{{ jacket.url }}" class="image"><img ng-src="{{ jacket.url }}"/></a>
-                            <a class="close-button icon fa fa-times-circle" ></a>
                         </article>
                     </div>
                 </div>
             </div>
 
         </div>
+
 
     </article>
 </div>

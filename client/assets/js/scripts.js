@@ -48,6 +48,20 @@ function MainController($scope, $http) {
         return Math.floor(Math.random() * maxValue)
     };
 
+    $scope.typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
+    $scope.clothes = [];
+
+    $scope.typesOfClothing.forEach(function(typeOfClothing){
+        $http.get(host + 'images/' + typeOfClothing).then(function successCallback(response) {
+            var obj = {};
+            obj[typeOfClothing] = response.data;
+
+            $scope.clothes.push(obj);
+        });
+    });
+    
+    console.log($scope.clothes);
+
     $http.get(host + 'images/shirt')
         .success(function (data) {
             $scope.shirts = data;
@@ -91,7 +105,7 @@ function MainController($scope, $http) {
 
         $http.get(weatherURL).then(function successCallback(response) {
             var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
-            var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5/9);
+            var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5 / 9);
 
             $scope.temperature = Math.ceil(temperatureInCelsius);
             $scope.weather = response.data['currently']['summary'];
@@ -114,9 +128,13 @@ function MainController($scope, $http) {
 
     navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 
-    $scope.cool = function () {
-        window.alert("Hello World!");
-    }
+    $scope.deleteClothing = function () {
+
+        console.log(this);
+        var oid = this.shirt._id.$oid;
+        console.log(oid);
+        // $http.delete(host + 'images');
+    };
 }
 
 function StyleController($scope, $http) {
