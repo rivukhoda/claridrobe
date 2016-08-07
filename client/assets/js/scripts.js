@@ -36,21 +36,6 @@ function MainController($scope, $http) {
         });
     };
 
-    $scope.generateRandomOutfit = function () {
-
-        $scope.shirtIndex = generateRandomIndex($scope.shirts.length);
-        $scope.pantIndex = generateRandomIndex($scope.pants.length);
-        $scope.jacketIndex = generateRandomIndex($scope.jackets.length);
-        $scope.shoeIndex = generateRandomIndex($scope.shoes.length);
-    };
-
-    function generateRandomIndex(maxValue) {
-        var temp = Math.floor(Math.random() * maxValue);
-        console.log(temp);
-        return temp;
-        // return Math.floor(Math.random() * maxValue)
-    };
-
     $scope.generateRandomIndex = function () {
         return Math.floor(Math.random() * this.setOfClothes.data.length);
     }
@@ -67,38 +52,6 @@ function MainController($scope, $http) {
         });
     });
 
-    $http.get(host + 'images/shirt')
-        .success(function (data) {
-            $scope.shirts = data;
-            $scope.shirtIndex = generateRandomIndex($scope.shirts.length);
-        })
-        .error(function (data, status, error, config) {
-            $scope.shirts = [{heading: "Error", description: "Could not load json data"}];
-        });
-    $http.get(host + 'images/pants')
-        .success(function (data) {
-            $scope.pants = data;
-            $scope.pantIndex = generateRandomIndex($scope.pants.length);
-        })
-        .error(function (data, status, error, config) {
-            $scope.pants = [{heading: "Error", description: "Could not load json data"}];
-        });
-    $http.get(host + 'images/footwear')
-        .success(function (data) {
-            $scope.shoes = data;
-            $scope.shoeIndex = generateRandomIndex($scope.shoes.length);
-        })
-        .error(function (data, status, error, config) {
-            $scope.shoes = [{heading: "Error", description: "Could not load json data"}];
-        });
-    $http.get(host + 'images/jacket')
-        .success(function (data) {
-            $scope.jackets = data;
-            $scope.jacketIndex = generateRandomIndex($scope.jackets.length);
-        })
-        .error(function (data, status, error, config) {
-            $scope.jackets = [{heading: "Error", description: "Could not load json data"}];
-        });
 
     var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
 
