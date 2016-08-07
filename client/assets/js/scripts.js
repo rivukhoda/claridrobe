@@ -49,18 +49,16 @@ function MainController($scope, $http) {
     };
 
     $scope.typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
-    $scope.clothes = [];
+    $scope.setsOfClothes = [];
 
-    $scope.typesOfClothing.forEach(function(typeOfClothing){
+    $scope.typesOfClothing.forEach(function (typeOfClothing) {
         $http.get(host + 'images/' + typeOfClothing).then(function successCallback(response) {
             var obj = {};
             obj[typeOfClothing] = response.data;
 
-            $scope.clothes.push(obj);
+            $scope.setsOfClothes.push(obj);
         });
     });
-    
-    console.log($scope.clothes);
 
     $http.get(host + 'images/shirt')
         .success(function (data) {
@@ -129,11 +127,9 @@ function MainController($scope, $http) {
     navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 
     $scope.deleteClothing = function () {
-
-        console.log(this);
-        var oid = this.shirt._id.$oid;
-        console.log(oid);
-        // $http.delete(host + 'images');
+        this.$parent.this.clothes.splice(this.$index, 1);
+        var oid = this.clothing._id.$oid;
+        $http.delete(host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 }
 
