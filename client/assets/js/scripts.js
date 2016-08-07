@@ -53,10 +53,10 @@ function MainController($scope, $http) {
 
     $scope.typesOfClothing.forEach(function (typeOfClothing) {
         $http.get(host + 'images/' + typeOfClothing).then(function successCallback(response) {
-            var obj = {};
-            obj[typeOfClothing] = response.data;
+            var setOfClothes = {'type': typeOfClothing};
+            setOfClothes['data'] = response.data;
 
-            $scope.setsOfClothes.push(obj);
+            $scope.setsOfClothes.push(setOfClothes);
         });
     });
 
