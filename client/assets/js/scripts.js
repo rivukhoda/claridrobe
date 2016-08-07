@@ -45,8 +45,15 @@ function MainController($scope, $http) {
     };
 
     function generateRandomIndex(maxValue) {
-        return Math.floor(Math.random() * maxValue)
+        var temp = Math.floor(Math.random() * maxValue);
+        console.log(temp);
+        return temp;
+        // return Math.floor(Math.random() * maxValue)
     };
+
+    $scope.generateRandomIndex = function () {
+        return Math.floor(Math.random() * this.setOfClothes.data.length);
+    }
 
     $scope.typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
     $scope.setsOfClothes = [];
