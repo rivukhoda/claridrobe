@@ -66,12 +66,12 @@
 
         <div class="container">
 
-            <div class="row" ng-repeat="clothing in clothes">
-                <div class="col-lg-12 col-xs-12" ng-repeat="(key,value) in clothing">
-                    <h1>{{ key }}</h1>
+            <div class="row" ng-repeat="setOfClothes in setsOfClothes">
+                <div class="col-lg-12 col-xs-12" ng-repeat="(type, clothes) in setOfClothes">
+                    <h1>{{ type }}</h1>
                     <div id="main">
-                        <article ng-repeat="instance in value track by $index" class="thumb">
-                            <a href="{{ instance.url }}" class="image"><img ng-src="{{ instance.url }}"/></a>
+                        <article ng-repeat="clothing in clothes track by $index" class="thumb">
+                            <a href="{{ clothing.url }}" class="image"><img ng-src="{{ clothing.url }}"/></a>
                             <a class="close-button icon fa fa-times-circle" ng-click="deleteClothing()"></a>
                         </article>
                     </div>
