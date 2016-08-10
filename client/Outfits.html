@@ -64,10 +64,10 @@
                 </p>
             </header>
             <footer>
-                <button ng-click="generateRandomIndex()">
+                <button ng-click="generateRandomIndices()">
                     Randomize
                 </button>
-                <button ng-click="generateRandomIndex()">
+                <button ng-click="generateRandomIndices()">
                     Recommend
                 </button>
             </footer>
@@ -78,7 +78,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="setOfClothes in setsOfClothes">
                     <header>
-                        <img ng-src="{{ setOfClothes.data[generateRandomIndex()].url}}" class="img-responsive">
+                        <img ng-src="{{ setOfClothes.data[setOfClothes.displayIndex].url}}" class="img-responsive">
                         <h1> {{ setOfClothes.type }} </h1>
                     </header>
                 </div>

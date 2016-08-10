@@ -16,38 +16,42 @@ function MainController($scope, $http) {
     };
 
     $scope.saveOutfit = function () {
-        $http({
-            method: 'POST',
-            url: host + 'outfits',
-            headers: {'Content-Type': 'application/json'},
-            data: {
-                'clothes': [
-                    {'url': $scope.shirts[$scope.shirtIndex].url},
-                    {'url': $scope.pants[$scope.pantIndex].url},
-                    {'url': $scope.jackets[$scope.jacketIndex].url},
-                    {'url': $scope.shoes[$scope.shoeIndex].url}
-                ],
-                'date': $scope.date
-            }
-        }).then(function successCallback(response) {
-            $scope.message = 'Outfit Saved!'
-        }, function errorCallback(response) {
-            $scope.message = 'Save Failed...'
-        });
+        // $http({
+        //     method: 'POST',
+        //     url: host + 'outfits',
+        //     headers: {'Content-Type': 'application/json'},
+        //     data: {
+        //         'clothes': [
+        //             {'url': $scope.shirts[$scope.shirtIndex].url},
+        //             {'url': $scope.pants[$scope.pantIndex].url},
+        //             {'url': $scope.jackets[$scope.jacketIndex].url},
+        //             {'url': $scope.shoes[$scope.shoeIndex].url}
+        //         ],
+        //         'date': $scope.date
+        //     }
+        // }).then(function successCallback(response) {
+        //     $scope.message = 'Outfit Saved!'
+        // }, function errorCallback(response) {
+        //     $scope.message = 'Save Failed...'
+        // })
+        // console.log(this);
+
     };
 
-    $scope.generateRandomIndex = function () {
-        return Math.floor(Math.random() * this.setOfClothes.data.length);
-    }
+    $scope.generateRandomIndices = function () {
+
+        $scope.setsOfClothes.forEach(function (setOfClothes) {
+            setOfClothes.displayIndex = Math.floor(Math.random() * setOfClothes.data.length);
+        });
+
+    };
 
     $scope.typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
     $scope.setsOfClothes = [];
 
     $scope.typesOfClothing.forEach(function (typeOfClothing) {
         $http.get(host + 'images/' + typeOfClothing).then(function successCallback(response) {
-            var setOfClothes = {'type': typeOfClothing};
-            setOfClothes['data'] = response.data;
-
+            var setOfClothes = {'type': typeOfClothing, 'data': response.data, 'displayIndex': undefined };
             $scope.setsOfClothes.push(setOfClothes);
         });
     });
