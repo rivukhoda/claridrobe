@@ -39,19 +39,22 @@ function MainController($scope, $http) {
     };
 
     $scope.generateRandomIndices = function () {
-
         $scope.setsOfClothes.forEach(function (setOfClothes) {
-            setOfClothes.displayIndex = Math.floor(Math.random() * setOfClothes.data.length);
+            setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
         });
-
     };
+
+    function generateRandomIndex(maxValue) {
+        return Math.floor(Math.random() * maxValue);
+    }
 
     $scope.typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
     $scope.setsOfClothes = [];
 
     $scope.typesOfClothing.forEach(function (typeOfClothing) {
         $http.get(host + 'images/' + typeOfClothing).then(function successCallback(response) {
-            var setOfClothes = {'type': typeOfClothing, 'data': response.data, 'displayIndex': undefined };
+            var setOfClothes = {'type': typeOfClothing, 'data': response.data, 'displayIndex': undefined};
+            setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
             $scope.setsOfClothes.push(setOfClothes);
         });
     });
@@ -82,11 +85,11 @@ function MainController($scope, $http) {
 
             $scope.location = area + ', ' + city;
         });
-    };
+    }
 
     function geo_error(err) {
         console.log(err.code + err.message);
-    };
+    }
 
     navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 
