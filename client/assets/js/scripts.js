@@ -16,26 +16,19 @@ function MainController($scope, $http) {
     };
 
     $scope.saveOutfit = function () {
-        // $http({
-        //     method: 'POST',
-        //     url: host + 'outfits',
-        //     headers: {'Content-Type': 'application/json'},
-        //     data: {
-        //         'clothes': [
-        //             {'url': $scope.shirts[$scope.shirtIndex].url},
-        //             {'url': $scope.pants[$scope.pantIndex].url},
-        //             {'url': $scope.jackets[$scope.jacketIndex].url},
-        //             {'url': $scope.shoes[$scope.shoeIndex].url}
-        //         ],
-        //         'date': $scope.date
-        //     }
-        // }).then(function successCallback(response) {
-        //     $scope.message = 'Outfit Saved!'
-        // }, function errorCallback(response) {
-        //     $scope.message = 'Save Failed...'
-        // })
-        // console.log(this);
+        var outfit = {'clothes' : [], 'date' : $scope.date};
 
+        $scope.setsOfClothes.forEach(function (setOfClothes) {
+            var clothingOnDisplay = setOfClothes.data[setOfClothes.displayIndex].url;
+            outfit.clothes.push({'url' : clothingOnDisplay});
+        });
+
+        $http.post(host + 'outfits', outfit, {headers: {'Content-Type': 'application/json'}}
+        ).then(function successCallback(response) {
+            $scope.message = 'Outfit Saved!'
+        }, function errorCallback(response) {
+            $scope.message = 'Save Failed...'
+        })
     };
 
     $scope.generateRandomIndices = function () {
