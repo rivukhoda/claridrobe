@@ -5,22 +5,19 @@ function MainController($scope, $http) {
     $scope.date = new Date();
 
     $scope.clearWardrobe = function () {
-        $http.delete(host + 'images')
-            .success(function (data) {
-                $scope.message = 'Wardrobe Cleared!';
-                $window.location.reload();
+        $http.delete(host + 'images').then(function successCallback(response) {
+            $scope.setsOfClothes.forEach(function (setOfClothes) {
+                setOfClothes.data = null;
             })
-            .error(function (data, status, error, config) {
-                $scope.message = [{heading: "Error", description: "Could not load json data..."}];
-            });
+        });
     };
 
     $scope.saveOutfit = function () {
-        var outfit = {'clothes' : [], 'date' : $scope.date};
+        var outfit = {'clothes': [], 'date': $scope.date};
 
         $scope.setsOfClothes.forEach(function (setOfClothes) {
             var clothingOnDisplay = setOfClothes.data[setOfClothes.displayIndex].url;
-            outfit.clothes.push({'url' : clothingOnDisplay});
+            outfit.clothes.push({'url': clothingOnDisplay});
         });
 
         $http.post(host + 'outfits', outfit, {headers: {'Content-Type': 'application/json'}}
