@@ -94,7 +94,7 @@ function StyleController($scope, $http) {
 
     $scope.date = new Date();
     $scope.saved = null;
-    
+
     $http.get(host + 'outfits', {headers: {'Content-Type': 'application/json'}}).then(function successCallback(response) {
         $scope.savedOutfits = response.data;
     });
@@ -111,13 +111,14 @@ function UploadController($scope, $http, toaster) {
     $scope.field = "enter_your_link_to_image_that_you_want_to_upload";
     $scope.submit = function () {
         var data = JSON.stringify({'url': $scope.field});
-        $http.post(host + 'images', data, {headers: {'Content-Type': 'application/json'}}).success(function (data, status) {
-            toaster.success("Success", "Upload complete!");
-        })
-            .error(function (data, status, error, config) {
+
+        $http.post(host + 'images', data, {headers: {'Content-Type': 'application/json'}})
+            .then(function successCallback(response) {
+                toaster.success("Success", "Upload complete!");
+            }, function errorCallback(response) {
                 toaster.error("Error", "Oups, something went wrong, try again in a few minutes.");
             });
-    }
+    };
 }
 
 var upload = angular.module('Upload', ['toaster', 'ngAnimate']);
