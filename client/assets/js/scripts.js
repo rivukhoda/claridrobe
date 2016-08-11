@@ -94,14 +94,10 @@ function StyleController($scope, $http) {
 
     $scope.date = new Date();
     $scope.saved = null;
-
-    $http.get(host + 'outfits', {headers: {'Content-Type': 'application/json'}})
-        .success(function (data) {
-            $scope.savedOutfits = data;
-        })
-        .error(function (data, status, error, config) {
-            $scope.savedOutfits = [{heading: "Error", description: "Could not load json data"}];
-        });
+    
+    $http.get(host + 'outfits', {headers: {'Content-Type': 'application/json'}}).then(function successCallback(response) {
+        $scope.savedOutfits = response.data;
+    });
 
     $scope.deleteOutfit = function () {
         $scope.savedOutfits.splice(this.$index, 1);
