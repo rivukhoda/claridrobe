@@ -1,5 +1,9 @@
 var host = 'http://localhost:5000/';
 
+angular
+    .module('app')
+    .controller('MainController', MainController);
+
 function MainController($scope, $http) {
 
     $scope.date = new Date();
