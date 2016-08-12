@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js" async></script>
+
+    <!-- Angular toaster dependencies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet"/>
+    <script src="https://code.angularjs.org/1.2.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+
     <script src="assets/js/app.js"></script>
     <script src="assets/js/scripts.js"></script>
 
@@ -81,7 +87,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="setOfClothes in setsOfClothes">
                     <header>
-                        <img ng-src="{{ setOfClothes.data[setOfClothes.displayIndex].url}}" class="img-responsive">
+                        <img ng-src="{{ setOfClothes.data[setOfClothes.displayIndex].url }}" class="img-responsive">
                         <h1> {{ setOfClothes.type }} </h1>
                     </header>
                 </div>
