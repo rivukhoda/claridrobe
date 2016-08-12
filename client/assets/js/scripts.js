@@ -94,22 +94,6 @@ function MainController($scope, $http) {
     };
 }
 
-function StyleController($scope, $http) {
-
-    $scope.date = new Date();
-    $scope.saved = null;
-
-    $http.get(host + 'outfits', {headers: {'Content-Type': 'application/json'}}).then(function successCallback(response) {
-        $scope.savedOutfits = response.data;
-    });
-
-    $scope.deleteOutfit = function () {
-        $scope.savedOutfits.splice(this.$index, 1);
-        var oid = this.outfit._id.$oid;
-        $http.delete(host + 'outfits/' + oid, {headers: {'Content-Type': 'application/json'}});
-    };
-
-}
 
 function UploadController($scope, $http, toaster) {
     $scope.field = "enter_your_link_to_image_that_you_want_to_upload";
