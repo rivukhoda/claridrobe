@@ -1,15 +1,13 @@
-var host = 'http://localhost:5000/';
-
 angular
     .module('app')
     .controller('MainController', MainController);
 
-function MainController($scope, $http) {
+function MainController($scope, $http, config) {
 
     $scope.date = new Date();
 
     $scope.clearWardrobe = function () {
-        $http.delete(host + 'images').then(function successCallback(response) {
+        $http.delete(config.host + 'images').then(function successCallback(response) {
             $scope.setsOfClothes.forEach(function (setOfClothes) {
                 setOfClothes.data = null;
             })
@@ -24,7 +22,7 @@ function MainController($scope, $http) {
             outfit.clothes.push({'url': clothingOnDisplay});
         });
 
-        $http.post(host + 'outfits', outfit, {headers: {'Content-Type': 'application/json'}}
+        $http.post(config.host + 'outfits', outfit, {headers: {'Content-Type': 'application/json'}}
         ).then(function successCallback(response) {
             $scope.message = 'Outfit Saved!'
         }, function errorCallback(response) {
@@ -46,7 +44,7 @@ function MainController($scope, $http) {
     $scope.setsOfClothes = [];
 
     $scope.typesOfClothing.forEach(function (typeOfClothing) {
-        $http.get(host + 'images/' + typeOfClothing).then(function successCallback(response) {
+        $http.get(config.host + 'images/' + typeOfClothing).then(function successCallback(response) {
             var setOfClothes = {'type': typeOfClothing, 'data': response.data, 'displayIndex': undefined};
             setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
             $scope.setsOfClothes.push(setOfClothes);
@@ -60,7 +58,7 @@ function MainController($scope, $http) {
         var latitude = 'latitude=' + position.coords.latitude;
         var longitude = 'longitude=' + position.coords.longitude;
 
-        var weatherURL = host + 'weather?' + latitude + '&' + longitude;
+        var weatherURL = config.host + 'weather?' + latitude + '&' + longitude;
 
         $http.get(weatherURL).then(function successCallback(response) {
             var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
@@ -70,7 +68,7 @@ function MainController($scope, $http) {
             $scope.weather = response.data['currently']['summary'];
         });
 
-        var locationURL = host + 'location?' + latitude + '&' + longitude;
+        var locationURL = config.host + 'location?' + latitude + '&' + longitude;
 
         $http.get(locationURL).then(function successCallback(response) {
 
@@ -90,6 +88,6 @@ function MainController($scope, $http) {
     $scope.deleteClothing = function () {
         this.$parent.this.clothes.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
-        $http.delete(host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
+        $http.delete(config.host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 }

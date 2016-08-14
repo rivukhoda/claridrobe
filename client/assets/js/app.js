@@ -1,2 +1,3 @@
-angular.
-    module('app', ['toaster', 'ngAnimate']);
+angular
+    .module('app', ['toaster', 'ngAnimate'])
+    .constant('config', {'host' : 'http://localhost:5000/'});

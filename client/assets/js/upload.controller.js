@@ -7,7 +7,7 @@ function UploadController($scope, $http, toaster) {
     $scope.submit = function () {
         var data = JSON.stringify({'url': $scope.field});
 
-        $http.post(host + 'images', data, {headers: {'Content-Type': 'application/json'}})
+        $http.post(config.host + 'images', data, {headers: {'Content-Type': 'application/json'}})
             .then(function successCallback(response) {
                 toaster.success("Success", "Upload complete!");
             }, function errorCallback(response) {
