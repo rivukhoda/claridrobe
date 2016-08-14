@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('StyleController', StyleController);
 
-function StyleController($scope, $http) {
+function StyleController($scope, $http, config) {
 
     $scope.date = new Date();
     $scope.saved = null;

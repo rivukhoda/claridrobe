@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('UploadController', UploadController);
 
-function UploadController($scope, $http, toaster) {
+function UploadController($scope, $http, toaster, config) {
     $scope.field = "enter_your_link_to_image_that_you_want_to_upload";
     $scope.submit = function () {
         var data = JSON.stringify({'url': $scope.field});
