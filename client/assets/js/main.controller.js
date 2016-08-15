@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('MainController', MainController);
 
-function MainController($scope, $http, config) {
+function MainController($scope, $http, config, geocodeService) {
 
     $scope.date = new Date();
 
@@ -51,43 +51,11 @@ function MainController($scope, $http, config) {
         });
     });
 
-
-    var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
-
-    function geo_success(position) {
-        var latitude = 'latitude=' + position.coords.latitude;
-        var longitude = 'longitude=' + position.coords.longitude;
-
-        var weatherURL = config.host + 'weather?' + latitude + '&' + longitude;
-
-        $http.get(weatherURL).then(function successCallback(response) {
-            var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
-            var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5 / 9);
-
-            $scope.temperature = Math.ceil(temperatureInCelsius);
-            $scope.weather = response.data['currently']['summary'];
-        });
-
-        var locationURL = config.host + 'location?' + latitude + '&' + longitude;
-
-        $http.get(locationURL).then(function successCallback(response) {
-
-            var area = response.data['results'][1]['address_components'][0]['short_name'];
-            var city = response.data['results'][1]['address_components'][1]['long_name'];
-
-            $scope.location = area + ', ' + city;
-        });
-    }
-
-    function geo_error(err) {
-        console.log(err.code + err.message);
-    }
-
-    navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
-
     $scope.deleteClothing = function () {
         this.$parent.this.clothes.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
         $http.delete(config.host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
+
+    $scope.location = geocodeService;
 }
