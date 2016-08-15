@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('MainController', MainController);
 
-function MainController($scope, $http, config, geocodeService) {
+function MainController($scope, $http, config, geolocationService, dateService) {
 
-    $scope.date = new Date();
+    $scope.date = dateService;
 
     $scope.clearWardrobe = function () {
         $http.delete(config.host + 'images').then(function successCallback(response) {
@@ -57,5 +57,5 @@ function MainController($scope, $http, config, geocodeService) {
         $http.delete(config.host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 
-    $scope.location = geocodeService;
+    $scope.location = geolocationService;
 }
