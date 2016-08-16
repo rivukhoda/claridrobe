@@ -68,7 +68,7 @@
                 <h2>Hi. Welcome to <strong>Clairidrobe!</strong></h2>
                 <p>
                     Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
-                    <strong>{{ weather }} and {{ temperature }}&deg;C</strong> in <strong>{{ location.city }}, {{location.area}}.</strong>
+                    <strong>{{ data[0].condition }} and {{ data[1].temperature }}&deg;C</strong> in <strong>{{ data[1].city }}, {{data[1].area}}.</strong>
                     <br> Here are all the clothes catalogued in your wardrobe!
                 </p>
             </header>
