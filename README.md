@@ -1,3 +1,5 @@
+# (/client/assets/css/images/logo.png)
+
 Claridrobe
 ==========
 
