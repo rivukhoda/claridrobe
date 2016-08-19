@@ -1,8 +1,7 @@
 angular
     .module('app')
     .factory('dateService', function () {
-        var date = new Date();
-        return date;
+        return new Date();
     })
     .factory('weatherService', function ($http, config) {
 
@@ -24,13 +23,34 @@ angular
             });
         }
     })
-    .factory('geocodeService', function ($http, config) {
+    .factory('geolocationService', function ($http, config, $q) {
 
-        return function getAddress(latitude, longitude) {
+        var deferred = $q.defer();
 
-            var addressURL = config.host + 'location?latitude=' + latitude + '&longitude=' + longitude;
+        function geo_success(position) {
+            deferred.resolve(position);
+        }
 
-            $http.get(addressURL).then(function successCallback(response) {
+        function geo_error(err) {
+            deferred.reject(err);
+        }
+
+        var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
+
+        navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+
+        return deferred.promise;
+
+    })
+    .factory('geocodeService', function ($http, config, geolocationService) {
+
+        var promiseGeocode = geolocationService.then(function getAddress(position) {
+
+            var latitude = 'latitude=' + position.coords.latitude;
+            var longitude = 'longitude=' + position.coords.longitude;
+            var addressURL = config.host + 'location?' + latitude + '&' + longitude;
+
+            var promiseAddress = $http.get(addressURL).then(function successCallback(response) {
 
                 var address = {"area": undefined, "city": undefined};
 
@@ -38,29 +58,9 @@ angular
                 address['city'] = response.data['results'][1]['address_components'][1]['long_name'];
 
                 return address;
-
             });
-        }
-    })
-    .factory('geolocationService', function ($http, config, weatherService, geocodeService) {
-
-        var place = {};
-
-        var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
-
-        navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
-
-        function geo_success(position) {
-
-            weatherService(position.coords.latitude, position.coords.longitude);
-            geocodeService(position.coords.latitude, position.coords.longitude);
-
-        }
-
-        function geo_error(err) {
-            console.log(err.code + err.message);
-        }
-
-        return place;
+            return promiseAddress;
+        });
+        return promiseGeocode;
     });
 
