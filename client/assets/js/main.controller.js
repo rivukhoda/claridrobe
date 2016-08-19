@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('MainController', MainController);
 
-function MainController($scope, $http, config, geolocationService, dateService) {
+function MainController($scope, $http, config, geolocationService, geocodeService, weatherService, dateService) {
 
     $scope.date = dateService;
 
@@ -57,5 +57,9 @@ function MainController($scope, $http, config, geolocationService, dateService) 
         $http.delete(config.host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 
-    $scope.location = geolocationService;
+    // $scope.data = geolocationService;
+    geolocationService.then(function successCallback(position) {console.log(position);});
+    geocodeService.then(function successCallback(address) {console.log(address);});
+    weatherService.then(function successCallback(weather){console.log(weather);});
+    // console.log(geocodeService);
 }

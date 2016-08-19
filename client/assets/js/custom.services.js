@@ -1,28 +1,10 @@
 angular
     .module('app')
+
     .factory('dateService', function () {
         return new Date();
     })
-    .factory('weatherService', function ($http, config) {
 
-        return function getWeather(latitude, longitude) {
-
-            var weatherURL = config.host + 'weather?latitude=' + latitude + '&longitude=' + longitude;
-
-            $http.get(weatherURL).then(function successCallback(response) {
-
-                var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
-                var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5 / 9);
-
-                var weather = {"condition": undefined, "temperature": undefined};
-
-                weather['condition'] = response.data['currently']['summary'];
-                weather['temperature'] = Math.ceil(temperatureInCelsius);
-
-                return weather;
-            });
-        }
-    })
     .factory('geolocationService', function ($http, config, $q) {
 
         var deferred = $q.defer();
@@ -42,6 +24,7 @@ angular
         return deferred.promise;
 
     })
+
     .factory('geocodeService', function ($http, config, geolocationService) {
 
         var promiseGeocode = geolocationService.then(function getAddress(position) {
@@ -50,7 +33,7 @@ angular
             var longitude = 'longitude=' + position.coords.longitude;
             var addressURL = config.host + 'location?' + latitude + '&' + longitude;
 
-            var promiseAddress = $http.get(addressURL).then(function successCallback(response) {
+            var promiseGeocodeAPI = $http.get(addressURL).then(function successCallback(response) {
 
                 var address = {"area": undefined, "city": undefined};
 
@@ -59,8 +42,33 @@ angular
 
                 return address;
             });
-            return promiseAddress;
+            return promiseGeocodeAPI;
         });
         return promiseGeocode;
+    })
+
+    .factory('weatherService', function ($http, config, geolocationService) {
+
+        var promiseWeather = geolocationService.then(function getWeather(position) {
+
+            var latitude = 'latitude=' + position.coords.latitude;
+            var longitude = 'longitude=' + position.coords.longitude;
+            var weatherURL = config.host + 'weather?' + latitude + '&' + longitude;
+
+            var promiseWeatherAPI = $http.get(weatherURL).then(function successCallback(response) {
+
+                var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
+                var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5 / 9);
+
+                var weather = {"condition": undefined, "temperature": undefined};
+
+                weather['condition'] = response.data['currently']['summary'];
+                weather['temperature'] = Math.ceil(temperatureInCelsius);
+
+                return weather;
+            });
+            return promiseWeatherAPI;
+        });
+        return promiseWeather;
     });
 
