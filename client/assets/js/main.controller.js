@@ -2,9 +2,16 @@ angular
     .module('app')
     .controller('MainController', MainController);
 
-function MainController($scope, $http, config, geolocationService, geocodeService, weatherService, dateService) {
+function MainController($scope, $http, config, geocodeService, weatherService, dateService) {
 
     $scope.date = dateService;
+    
+    geocodeService.then(function successCallback(address) {
+        $scope.address = address;
+    });
+    weatherService.then(function successCallback(weather) {
+        $scope.weather = weather;
+    });
 
     $scope.clearWardrobe = function () {
         $http.delete(config.host + 'images').then(function successCallback(response) {
@@ -57,9 +64,4 @@ function MainController($scope, $http, config, geolocationService, geocodeServic
         $http.delete(config.host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
 
-    // $scope.data = geolocationService;
-    geolocationService.then(function successCallback(position) {console.log(position);});
-    geocodeService.then(function successCallback(address) {console.log(address);});
-    weatherService.then(function successCallback(weather){console.log(weather);});
-    // console.log(geocodeService);
 }
