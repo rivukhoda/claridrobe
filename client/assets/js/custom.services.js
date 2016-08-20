@@ -70,5 +70,24 @@ angular
             return promiseWeatherAPI;
         });
         return promiseWeather;
+    })
+
+    .factory('clothingService', function ($http, config) {
+        var typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
+        var setsOfClothes = [];
+
+        typesOfClothing.forEach(function (typeOfClothing) {
+            $http.get(config.host + 'images/' + typeOfClothing).then(function successCallback(response) {
+
+                var setOfClothes = {'type': typeOfClothing, 'data': response.data, 'displayIndex': undefined};
+                setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
+                setsOfClothes.push(setOfClothes);
+            });
+        });
+        return setsOfClothes;
     });
+
+function generateRandomIndex(maxValue) {
+    return Math.floor(Math.random() * maxValue);
+}
 
