@@ -2,10 +2,10 @@ angular
     .module('app')
     .controller('MainController', MainController);
 
-function MainController($scope, $http, config, geocodeService, weatherService, dateService) {
+function MainController($scope, $http, config, geocodeService, weatherService, dateService, clothingService) {
 
     $scope.date = dateService;
-    
+
     geocodeService.then(function successCallback(address) {
         $scope.address = address;
     });
@@ -47,17 +47,8 @@ function MainController($scope, $http, config, geocodeService, weatherService, d
         return Math.floor(Math.random() * maxValue);
     }
 
-    $scope.typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
-    $scope.setsOfClothes = [];
-
-    $scope.typesOfClothing.forEach(function (typeOfClothing) {
-        $http.get(config.host + 'images/' + typeOfClothing).then(function successCallback(response) {
-            var setOfClothes = {'type': typeOfClothing, 'data': response.data, 'displayIndex': undefined};
-            setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
-            $scope.setsOfClothes.push(setOfClothes);
-        });
-    });
-
+    $scope.setsOfClothes = clothingService;
+    
     $scope.deleteClothing = function () {
         this.$parent.this.clothes.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
