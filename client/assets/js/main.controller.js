@@ -36,19 +36,9 @@ function MainController($scope, $http, config, geocodeService, weatherService, d
             $scope.message = 'Save Failed...'
         })
     };
-
-    $scope.generateRandomIndices = function () {
-        $scope.setsOfClothes.forEach(function (setOfClothes) {
-            setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
-        });
-    };
-
-    function generateRandomIndex(maxValue) {
-        return Math.floor(Math.random() * maxValue);
-    }
-
-    $scope.setsOfClothes = clothingService;
     
+    $scope.setsOfClothes = clothingService;
+
     $scope.deleteClothing = function () {
         this.$parent.this.clothes.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
