@@ -1,8 +1,8 @@
 angular
     .module('app')
-    .controller('MainController', MainController);
+    .controller('GalleryController', GalleryController);
 
-function MainController($scope, $http, config, geocodeService, weatherService, dateService, clothingService) {
+function GalleryController($scope, $http, config, geocodeService, weatherService, dateService, clothingService) {
 
     $scope.date = dateService;
 
