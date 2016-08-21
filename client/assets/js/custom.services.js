@@ -87,6 +87,7 @@ angular
         return setsOfClothes;
     });
 
+
 function generateRandomIndex(maxValue) {
     return Math.floor(Math.random() * maxValue);
 }
