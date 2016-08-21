@@ -6,6 +6,8 @@ function MainController($scope, $http, config, geocodeService, weatherService, d
 
     $scope.date = dateService;
 
+    $scope.setsOfClothes = clothingService;
+
     geocodeService.then(function successCallback(address) {
         $scope.address = address;
     });
@@ -20,25 +22,7 @@ function MainController($scope, $http, config, geocodeService, weatherService, d
             })
         });
     };
-
-    $scope.saveOutfit = function () {
-        var outfit = {'clothes': [], 'date': $scope.date};
-
-        $scope.setsOfClothes.forEach(function (setOfClothes) {
-            var clothingOnDisplay = setOfClothes.data[setOfClothes.displayIndex].url;
-            outfit.clothes.push({'url': clothingOnDisplay});
-        });
-
-        $http.post(config.host + 'outfits', outfit, {headers: {'Content-Type': 'application/json'}}
-        ).then(function successCallback(response) {
-            $scope.message = 'Outfit Saved!'
-        }, function errorCallback(response) {
-            $scope.message = 'Save Failed...'
-        })
-    };
     
-    $scope.setsOfClothes = clothingService;
-
     $scope.deleteClothing = function () {
         this.$parent.this.clothes.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
