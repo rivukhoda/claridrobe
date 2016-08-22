@@ -81,7 +81,7 @@
                 <div class="col-lg-12 col-xs-12" ng-repeat="setOfClothes in setsOfClothes">
                     <h1>{{ setOfClothes.type }}</h1>
                     <div id="main">
-                        <article ng-repeat="clothing in setOfClothes.data track by $index" class="thumb">
+                        <article ng-repeat="clothing in setOfClothes.data" class="thumb">
                             <a href="{{ clothing.url }}" class="image"><img ng-src="{{ clothing.url }}"/></a>
                             <a class="close-button icon fa fa-times-circle" ng-click="deleteClothing()"></a>
                         </article>
