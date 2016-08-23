@@ -2,7 +2,20 @@ angular
     .module('app')
     .controller('OutfitController', OutfitController);
 
-function OutfitController($scope, $http, config) {
+function OutfitController($scope, $http, config, dateService, geocodeService, weatherService, clothingService) {
+
+    $scope.date = dateService;
+
+    $scope.setsOfClothes = clothingService;
+
+    geocodeService.then(function successCallback(address) {
+        $scope.address = address;
+    });
+    weatherService.then(function successCallback(weather) {
+        $scope.weather = weather;
+    });
+
+
     $scope.generateRandomIndices = function () {
         $scope.setsOfClothes.forEach(function (setOfClothes) {
             setOfClothes.displayIndex = generateRandomIndex(setOfClothes.data.length);
