@@ -24,7 +24,7 @@ function GalleryController($scope, $http, config, geocodeService, weatherService
     };
     
     $scope.deleteClothing = function () {
-        this.$parent.this.clothes.splice(this.$index, 1);
+        this.$parent.this.setOfClothes.data.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
         $http.delete(config.host + 'images/' + oid, {headers: {'Content-Type': 'application/json'}});
     };
