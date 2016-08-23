@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('StyleController', StyleController);
 
-function StyleController($scope, $http, config, dateService, geocodeService, weatherService) {
+function StyleController($scope, $http, config, dateService, geocodeService, weatherService, outfitService) {
 
     $scope.date = dateService;
 
@@ -14,8 +14,10 @@ function StyleController($scope, $http, config, dateService, geocodeService, wea
         $scope.weather = weather;
     });
 
-    $http.get(config.host + 'outfits', {headers: {'Content-Type': 'application/json'}}).then(function successCallback(response) {
-        $scope.savedOutfits = response.data;
+
+    $scope.savedOutfits = outfitService;
+    outfitService.then(function successCallback(savedOutfits) {
+        $scope.savedOutfits = savedOutfits;
     });
 
     $scope.deleteOutfit = function () {
