@@ -85,6 +85,13 @@ angular
             });
         });
         return setsOfClothes;
+    })
+
+    .factory('outfitService', function ($http, config) {
+        return $http.get(config.host + 'outfits', {headers: {'Content-Type': 'application/json'}})
+            .then(function successCallback(response) {
+                return response.data;
+            });
     });
 
 
