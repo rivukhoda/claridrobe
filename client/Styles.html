@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
 
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/gallery.controller.js"></script>
+    <script src="assets/js/custom.services.js"></script>
     <script src="assets/js/style.controller.js"></script>
 
     <!-- Drop-down menu for mobile view -->
@@ -65,8 +65,12 @@
         <section id="banner" class="gallery">
             <header>
                 <h2>Hi. Welcome to <strong>Claridrobe!</strong></h2>
-                <p> Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong> and the weather is
-                    <strong>-10&deg;C</strong> in <strong>Montreal.</strong> Here are all of your favorite outfits!</p>
+                <p>
+                    Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
+                    <strong>{{ weather.condition }} and {{ weather.temperature }}&deg;C</strong> in
+                    <strong>{{ address.area }}, {{ address.city }}.</strong>
+                    <br> Here are all of your favorite outfits!
+                </p>
             </header>
         </section>
 
