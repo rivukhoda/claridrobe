@@ -18,6 +18,7 @@
 
     <script src="assets/js/app.js"></script>
     <script src="assets/js/custom.services.js"></script>
+    <script src="assets/js/custom.directives.js"></script>
     <script src="assets/js/outfit.controller.js"></script>
 
     <!-- Drop-down menu for mobile view -->
@@ -33,94 +34,56 @@
 
 <div id="page-wrapper">
 
-    <!-- Header -->
-    <div id="header">
+    <my-header></my-header>
 
-        <!-- Inner -->
-        <div class="inner">
-            <header>
-                <h1><a href="index.html" id="logo">Claridrobe</a></h1>
+    <section id="content" class="content-section">
+        <div class="container">
+
+            <!-- Banner -->
+            <section id="banner">
                 <header>
-                    <h2 id="title">Create Outfit</h2>
+                    <h2>Hi. Welcome to <strong>Claridrobe!</strong></h2>
+                    <p>
+                        Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
+                        <strong>{{ weather.condition }} and {{ weather.temperature }}&deg;C</strong> in
+                        <strong>{{ address.area }}, {{ address.city }}.</strong>
+                        <br> What would you like to wear today?
+                    </p>
                 </header>
-            </header>
-        </div>
+                <footer>
+                    <button ng-click="generateRandomIndices()">
+                        Randomize
+                    </button>
+                    <button ng-click="generateRandomIndices()">
+                        Recommend
+                    </button>
+                </footer>
+            </section>
 
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Gallery.html">Gallery</a></li>
-                <li><a href="Outfits.html">Outfit</a></li>
-                <li><a href="Styles.html">Styles</a></li>
-                <li><a href="Upload.html">Upload</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+            <div class="row" id="outfit">
 
+                <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="setOfClothes in setsOfClothes">
+                        <header>
+                            <img ng-src="{{ setOfClothes.data[setOfClothes.displayIndex].url }}" class="img-responsive">
+                            <h1> {{ setOfClothes.type }} </h1>
+                        </header>
+                    </div>
+                </div>
+            </div>
 
-<section id="content" class="content-section">
-    <div class="container">
-
-        <!-- Banner -->
-        <section id="banner">
-            <header>
-                <h2>Hi. Welcome to <strong>Claridrobe!</strong></h2>
-                <p>
-                    Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
-                    <strong>{{ weather.condition }} and {{ weather.temperature }}&deg;C</strong> in
-                    <strong>{{ address.area }}, {{ address.city }}.</strong>
-                    <br> What would you like to wear today?
-                </p>
-            </header>
-            <footer>
-                <button ng-click="generateRandomIndices()">
-                    Randomize
-                </button>
-                <button ng-click="generateRandomIndices()">
-                    Recommend
-                </button>
-            </footer>
-        </section>
-
-        <div class="row" id="outfit">
-
-            <div class="col-lg-12 col-md-12">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-repeat="setOfClothes in setsOfClothes">
-                    <header>
-                        <img ng-src="{{ setOfClothes.data[setOfClothes.displayIndex].url }}" class="img-responsive">
-                        <h1> {{ setOfClothes.type }} </h1>
-                    </header>
+            <div id="center">
+                <div class="col-lg-12">
+                    <button ng-click="saveOutfit(); $window.location.reload();">Save Selection</button>
+                    <p id="center"><br><br>{{ message }}</p>
                 </div>
             </div>
         </div>
 
-        <div id="center">
-            <div class="col-lg-12">
-                <button ng-click="saveOutfit(); $window.location.reload();">Save Selection</button>
-                <p id="center"><br><br>{{ message }}</p>
-            </div>
-        </div>
-    </div>
+    </section>
 
-</section>
+    <my-footer></my-footer>
 
-<!-- Footer -->
-<div id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="12u">
-                <section class="contact">
-                    <a href="https://github.com/rivukhoda/claridrobe" target="_blank" class="icon fa fa-github"></a>
-                    <p>&copy; 2016
-                        <a href="https://ca.linkedin.com/in/rivukhoda" target="_blank">Rivu</a> and
-                        <a href="https://ca.linkedin.com/in/marvin-wu-23135772" target="_blank">Marvin</a>.
-                    </p>
-                </section>
-            </div>
-        </div>
-    </div>
 </div>
 
 </body>
