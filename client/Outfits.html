@@ -20,6 +20,7 @@
     <script src="assets/js/custom.services.js"></script>
     <script src="assets/js/custom.directives.js"></script>
     <script src="assets/js/outfit.controller.js"></script>
+    <script src="assets/js/greeting.controller.js"></script>
 
     <!-- Drop-down menu for mobile view -->
     <script src="assets/js/jquery.min.js"></script>
@@ -41,15 +42,8 @@
 
             <!-- Banner -->
             <section id="banner">
-                <header>
-                    <h2>Hi. Welcome to <strong>Claridrobe!</strong></h2>
-                    <p>
-                        Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
-                        <strong>{{ weather.condition }} and {{ weather.temperature }}&deg;C</strong> in
-                        <strong>{{ address.area }}, {{ address.city }}.</strong>
-                        <br> What would you like to wear today?
-                    </p>
-                </header>
+                <my-greeter greeting="What would you like to wear today?"></my-greeter>
+
                 <footer>
                     <button ng-click="generateRandomIndices()">
                         Randomize
