@@ -2,18 +2,9 @@ angular
     .module('app')
     .controller('GalleryController', GalleryController);
 
-function GalleryController($scope, $http, config, geocodeService, weatherService, dateService, clothingService) {
-
-    $scope.date = dateService;
+function GalleryController($scope, $http, config, clothingService) {
 
     $scope.setsOfClothes = clothingService;
-
-    geocodeService.then(function successCallback(address) {
-        $scope.address = address;
-    });
-    weatherService.then(function successCallback(weather) {
-        $scope.weather = weather;
-    });
 
     $scope.clearWardrobe = function () {
         $http.delete(config.host + 'images').then(function successCallback(response) {
@@ -22,7 +13,7 @@ function GalleryController($scope, $http, config, geocodeService, weatherService
             })
         });
     };
-    
+
     $scope.deleteClothing = function () {
         this.$parent.this.setOfClothes.data.splice(this.$index, 1);
         var oid = this.clothing._id.$oid;
