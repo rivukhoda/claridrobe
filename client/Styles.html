@@ -21,6 +21,7 @@
     <script src="assets/js/custom.services.js"></script>
     <script src="assets/js/custom.directives.js"></script>
     <script src="assets/js/style.controller.js"></script>
+    <script src="assets/js/greeting.controller.js"></script>
 
     <!-- Drop-down menu for mobile view -->
     <script src="assets/js/jquery.min.js"></script>
@@ -41,15 +42,7 @@
     <section id="content" class="content-section">
 
         <section id="banner" class="gallery">
-            <header>
-                <h2>Hi. Welcome to <strong>Claridrobe!</strong></h2>
-                <p>
-                    Today is <strong><span ng-bind="date | date:'MM/dd/yyyy'"></span></strong>. The weather is
-                    <strong>{{ weather.condition }} and {{ weather.temperature }}&deg;C</strong> in
-                    <strong>{{ address.area }}, {{ address.city }}.</strong>
-                    <br> Here are all of your favorite outfits!
-                </p>
-            </header>
+            <my-greeter greeting="Here are all of your favorite outfits!"></my-greeter>
         </section>
 
         <div class="container">
