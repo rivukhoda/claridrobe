@@ -12,6 +12,13 @@ angular
             templateUrl: 'my-footer.html',
             restrict: 'E'
         }
+    })
+    .directive('myGreeter', function () {
+        return {
+            templateUrl: 'my-greeter.html',
+            restrict: 'E',
+            scope: { greeting: '@'}
+        }
     });
 
 
