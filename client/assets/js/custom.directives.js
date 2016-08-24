@@ -4,7 +4,7 @@ angular
         return {
             templateUrl: 'my-header.html',
             restrict: 'E',
-            scope: { title: '@'}
+            scope: {title: '@'}
         }
     })
     .directive('myFooter', function () {
@@ -17,8 +17,9 @@ angular
         return {
             templateUrl: 'my-greeter.html',
             restrict: 'E',
-            scope: { greeting: '@'}
-        }
+            scope: {greeting: '@'},
+            controller: 'GreetingController'
+        };
     });
 
 
