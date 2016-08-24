@@ -2,18 +2,7 @@ angular
     .module('app')
     .controller('StyleController', StyleController);
 
-function StyleController($scope, $http, config, dateService, geocodeService, weatherService, outfitService) {
-
-    $scope.date = dateService;
-
-    geocodeService.then(function successCallback(address) {
-        $scope.address = address;
-    });
-
-    weatherService.then(function successCallback(weather) {
-        $scope.weather = weather;
-    });
-
+function StyleController($scope, $http, config, outfitService) {
 
     $scope.savedOutfits = outfitService;
     outfitService.then(function successCallback(savedOutfits) {
