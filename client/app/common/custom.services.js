@@ -5,7 +5,7 @@ angular
         return new Date();
     })
 
-    .factory('geolocationService', function ($http, config, $q) {
+    .factory('geolocationService', function ($http, $q) {
 
         var deferred = $q.defer();
 
