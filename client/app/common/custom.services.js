@@ -17,7 +17,7 @@ angular
             deferred.reject(err);
         }
 
-        var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 0};
+        var geo_options = {enableHighAccuracy: true, timeout: 5000, maximumAge: 60000};
 
         navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 
@@ -33,7 +33,7 @@ angular
             var longitude = 'longitude=' + position.coords.longitude;
             var addressURL = config.host + 'location?' + latitude + '&' + longitude;
 
-            var promiseGeocodeAPI = $http.get(addressURL).then(function successCallback(response) {
+            var promiseGeocodeAPI = $http.get(addressURL, {cache: true}).then(function successCallback(response) {
 
                 var address = {"area": undefined, "city": undefined};
 
@@ -55,7 +55,7 @@ angular
             var longitude = 'longitude=' + position.coords.longitude;
             var weatherURL = config.host + 'weather?' + latitude + '&' + longitude;
 
-            var promiseWeatherAPI = $http.get(weatherURL).then(function successCallback(response) {
+            var promiseWeatherAPI = $http.get(weatherURL, {cache: true}).then(function successCallback(response) {
 
                 var temperatureInFahrenheit = response.data['currently']['apparentTemperature'];
                 var temperatureInCelsius = (temperatureInFahrenheit - 32) * (5 / 9);
