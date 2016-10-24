@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 
 <head>
     <meta charset="utf-8"/>
@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js" async></script>
+
+    <!-- Angular toaster dependencies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet"/>
+    <script src="https://code.angularjs.org/1.2.0/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+
+    <script src="module.js"></script>
+    <script src="common/custom.directives.js"></script>
 
     <!-- Drop-down menu for mobile view, and animation for home page-->
     <script src="../assets/scripts/jquery.min.js"></script>
@@ -99,22 +109,7 @@
 
     </div>
 
-    <!-- Footer -->
-    <div id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="12u">
-                    <section class="contact">
-                        <a href="https://github.com/rivukhoda/claridrobe" target="_blank" class="icon fa fa-github"></a>
-                        <p>&copy; 2016
-                            <a href="https://ca.linkedin.com/in/rivukhoda" target="_blank">Rivu</a> and
-                            <a href="https://ca.linkedin.com/in/marvin-wu-23135772" target="_blank">Marvin</a>.
-                        </p>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
+    <my-footer></my-footer>
 
 </div>
 
