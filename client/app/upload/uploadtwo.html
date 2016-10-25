@@ -1,0 +1,27 @@
+<div id="page-wrapper wrapper">
+
+    <my-header title="Upload To Your Wardrobe!"></my-header>
+
+
+    <section id="content" class="content-section">
+        <div class="container">
+            <div class="row">
+                <div id="uploadform" class="col-lg-12 col-xs-12">
+                    <form ng-submit="submit()">
+                        <input type="url" ng-model="field" http-prefix>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="col-lg-12 col-xs-12">
+                    <h2>Image Preview: </h2>
+                    <img ng-src="{{ field }}"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <my-footer></my-footer>
+
+</div>
+
+<toaster-container toaster-options="{'time-out': 1000}"></toaster-container>
