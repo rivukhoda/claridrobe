@@ -5,17 +5,17 @@ angular
         $routeProvider
 
             .when('/gallery', {
-                templateUrl: 'gallery/shilly.html',
+                templateUrl: 'gallery/gallery.html',
                 controller: 'GalleryController'
             })
 
             .when('/outfit', {
-                templateUrl: 'outfit/billy.html',
+                templateUrl: 'outfit/outfit.html',
                 controller: 'OutfitController'
             })
 
             .when('/style', {
-                templateUrl: 'style/willy.html',
+                templateUrl: 'style/style.html',
                 controller: 'StyleController'
             })
 

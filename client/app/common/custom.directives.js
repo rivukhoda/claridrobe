@@ -20,6 +20,12 @@ angular
             scope: {greeting: '@'},
             controller: 'GreetingController'
         };
+    })
+    .directive('myNav', function () {
+        return {
+            templateUrl: '/claridrobe/client/app/common/my-nav.html',
+            restrict: 'E'
+        }
     });
 
 
