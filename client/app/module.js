@@ -20,7 +20,7 @@ angular
             })
 
             .when('/upload', {
-                templateUrl: 'upload/silly.html',
+                templateUrl: 'upload/upload.html',
                 controller: 'UploadController'
             })
 
