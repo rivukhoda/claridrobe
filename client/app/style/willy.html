@@ -1,0 +1,38 @@
+<div id="page-wrapper wrapper">
+
+    <my-header title="Favorite Styles"></my-header>
+
+
+    <section id="content" class="content-section">
+
+        <section id="banner" class="gallery">
+            <my-greeter greeting="Here are all of your favorite outfits!"></my-greeter>
+        </section>
+
+        <div class="container">
+            <h1>Saved Outfits</h1>
+            <div ng-repeat="outfit in savedOutfits" class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <!-- Main -->
+                    <div id="main">
+                        <div class="col-lg-12 col-xs-12">
+                            <h3>{{ outfit.date | date: MM/dd/yyyy }}</h3>
+                        </div>
+                        <div ng-repeat="item in outfit.clothes track by $index"
+                             class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+
+                            <header class="image">
+                                <img ng-src="{{ item.url }}" class="img-responsive">
+                            </header>
+                        </div>
+                    </div>
+                    <button style="margin: auto;display: block;" ng-click="deleteOutfit()">Delete Outfit</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <my-footer></my-footer>
+
+</div>

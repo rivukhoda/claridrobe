@@ -5,27 +5,27 @@ angular
         $routeProvider
 
             .when('/gallery', {
-                templateUrl: 'gallery/gallerytwo.html',
+                templateUrl: 'gallery/shilly.html',
                 controller: 'GalleryController'
             })
 
             .when('/outfit', {
-                templateUrl: 'outfit/outfittwo.html',
+                templateUrl: 'outfit/billy.html',
                 controller: 'OutfitController'
             })
 
             .when('/style', {
-                templateUrl: 'style/styletwo.html',
+                templateUrl: 'style/willy.html',
                 controller: 'StyleController'
             })
 
             .when('/upload', {
-                templateUrl: 'upload/uploadtwo.html',
+                templateUrl: 'upload/silly.html',
                 controller: 'UploadController'
             })
 
             .when('/', {
-                templateUrl: 'home/home.html',
-            })
+                templateUrl: 'home/home.html'
+            });
     });
 
