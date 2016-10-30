@@ -24,6 +24,16 @@ angular
                 controller: 'UploadController'
             })
 
+            .when('/login', {
+                templateUrl: 'login/login.html',
+                controller: 'UploadController'
+            })
+
+            .when('/register', {
+                templateUrl: 'register/register.html',
+                controller: 'UploadController'
+            })
+
             .when('/', {
                 templateUrl: 'home/home.html'
             });
