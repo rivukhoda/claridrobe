@@ -73,7 +73,7 @@ angular
     })
 
     .factory('clothingService', function ($http, config) {
-        var typesOfClothing = ['shirt', 'pants', 'footwear', 'jacket'];
+        var typesOfClothing = ['shirt', 'pants', 'skirt', 'dress', 'footwear', 'jacket'];
         var setsOfClothes = [];
 
         typesOfClothing.forEach(function (typeOfClothing) {

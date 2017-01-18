@@ -48,7 +48,8 @@ def store_image():
 
 
 def classify_clothing(image_url):
-    categories_of_clothes = ['shirt', 'pants', 'jacket', 'footwear']
+    categories_of_clothes = \
+        ['shirt', 'pants', 'skirt', 'dress', 'jacket', 'footwear']
     possible_categories = clarifai_api.tag_image_urls(image_url)
     generated_classes_of_clothes = possible_categories['results'][0]['result']['tag']['classes']
 
