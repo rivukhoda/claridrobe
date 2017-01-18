@@ -1,13 +1,42 @@
-<div id="page-wrapper wrapper">
+<section class="section section--hero section--no-separator" id="gallery">
+    <div class="section__block fixed-width">
+      <div class="section--hero__text">
+        <h2 class="hero__title">
+My Gallery
+</h2>
+        <p class="hero__subtitle">
+Displaying clothes in the app
+</p>
+      </div>
+      
+    </div>
+  </section>
 
-    <my-header title="My Gallery"></my-header>
+
+<section class="section section--content section--guides">
+    <div class="mdl-grid fixed-width">
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+        <div class="section__block section-block--content-titles mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet">
+           <my-greeter greeting="Here are all the clothes catalogued in your wardrobe!"></my-greeter>
+        
+            <p class="content__subtitle">
+                   <a href="#upload" class="button">Add New Clothes</a>
+                   <button ng-click="clearWardrobe()">Clear Wardrobe</button>
+            </p>
+
+           <div class="hide-small">
+           </div>
+       </div>
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+    </div>
+  </section>
+
+
+<div id="page-wrapper wrapper">
 
     <article id="content" class="content-section">
         <section id="banner" class="gallery">
-            <my-greeter greeting="Here are all the clothes catalogued in your wardrobe!"></my-greeter>
-
-            <a href="#upload" class="button">Add New Clothes</a>
-            <button ng-click="clearWardrobe()">Clear Wardrobe</button>
+            
         </section>
 
         <div class="container">
@@ -28,5 +57,4 @@
 
     </article>
 
-    <my-footer></my-footer>
 </div>

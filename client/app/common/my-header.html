@@ -1,14 +1,27 @@
-<div id="header">
-
-    <!-- Inner -->
-    <div class="inner">
-        <header>
-            <h1><a href="#" id="logo">Claridrobe</a></h1>
-            <header>
-                <h2 id="title">{{ title }}</h2>
-            </header>
-        </header>
+  <header class="mdl-layout__header">
+    <!-- Top row, always visible -->
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+     <span class="mdl-layout-title"> <a class="mdl-navigation__link" href="#"><img class="logo" src="../assets/img/logo.png" width="130px"></a></span>
+      <div class="mdl-layout-spacer"></div>
+       <nav class="mdl-navigation mdl-layout--large-screen-only ">
+          <a class="mdl-navigation__link" href="#">Home</a>
+          <a class="mdl-navigation__link" href="#gallery">Gallery</a>
+          <a class="mdl-navigation__link" href="#outfit">Outfit</a>
+          <a class="mdl-navigation__link" href="#style">Styles</a>
+          <a class="mdl-navigation__link" href="#upload">Upload</a>
+          <a class="mdl-navigation__link" href="#login">Login</a>
+          <a class="mdl-navigation__link" href="#register">Register</a>
+    </nav>
     </div>
-
-    <my-nav></my-nav>
-</div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title"><img class="logo" src="../assets/img/logo.png" width="130px"></span>
+    <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="#">Home</a>
+          <a class="mdl-navigation__link" href="#gallery">Gallery</a>
+          <a class="mdl-navigation__link" href="#outfit">Outfit</a>
+          <a class="mdl-navigation__link" href="#style">Styles</a>
+          <a class="mdl-navigation__link" href="#upload">Upload</a>
+    </nav>
+  </div>
