@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config.from_object('settings.DevelopmentConfig')
 CORS(app)
 mongo = PyMongo(app)
-clarifai_api = ClarifaiApi()
+clarifai_api = ClarifaiApi(app.config['CLARIFAI_API_CLIENT_ID'], app.config['CLARIFAI_API_CLIENT_SECRET'])
 
 
 @app.route('/images', methods=['GET'])
@@ -48,7 +48,8 @@ def store_image():
 
 
 def classify_clothing(image_url):
-    categories_of_clothes = ['shirt', 'pants', 'jacket', 'footwear']
+    categories_of_clothes = \
+        ['shirt', 'pants', 'skirt', 'dress', 'jacket', 'footwear']
     possible_categories = clarifai_api.tag_image_urls(image_url)
     generated_classes_of_clothes = possible_categories['results'][0]['result']['tag']['classes']
 
@@ -79,7 +80,7 @@ def delete_outfit(oid):
 
 @app.route('/weather', methods=['GET'])
 def get_weather_info():
-    url = 'https://api.forecast.io/forecast/'
+    url = 'https://api.darksky.net/forecast/'
     latitude = request.args.get('latitude')
     longitude = request.args.get('longitude')
     api_key = app.config['DARKSKY_API_KEY']
